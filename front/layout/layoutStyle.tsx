@@ -11,6 +11,8 @@ export const Totalframe = styled.div`
   overflow-y: auto;
   margin-top: env(safe-area-inset-top);
   margin-bottom: env(safe-area-inset-bottom);
+
+  background-color: #ededed;
   &::-webkit-scrollbar {
     display: none;
   }
