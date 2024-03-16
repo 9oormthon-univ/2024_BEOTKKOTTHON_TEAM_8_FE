@@ -2,7 +2,7 @@ import Layout from "@/layout";
 
 const Home = () => {
     return (
-        <Layout isHeader={false}>
+        <Layout isHeader={true}>
             <div></div>
         </Layout>
     )
