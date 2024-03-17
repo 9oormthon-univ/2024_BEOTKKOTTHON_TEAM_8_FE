@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 const breakpoints = [480, 768, 992, 1280];
-const media = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+const media = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
 
 export const Totalframe = styled.div`
   width: 100vw;
