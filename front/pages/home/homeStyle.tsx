@@ -45,3 +45,6 @@ export const LifeQuotes = styled.div`
   font-size: 1.2rem;
   width: 100%;
 `;
+export const Author = styled.div`
+  margin-top: 10px;
+`;

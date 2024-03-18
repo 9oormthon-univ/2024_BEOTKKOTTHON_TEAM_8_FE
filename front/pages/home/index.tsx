@@ -1,7 +1,19 @@
+import { useState, useEffect } from 'react';
 import Layout from '@/layout';
 import * as h from './homeStyle';
+import quotesData from '@/public/json/quote.json';
 
 const Home = () => {
+  const [quote, setQuote] = useState({});
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const randomIdx = Math.floor(Math.random() * quotesData.length);
+      setQuote(quotesData[randomIdx]);
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
   return (
     <Layout isHeader={true}>
       <h.SubTitle>{`보관함이 열리기까지`}</h.SubTitle>
@@ -11,10 +23,12 @@ const Home = () => {
         <h.Menu>{`걱정 넣기`}</h.Menu>
         <h.Menu>{`보관함 열기`}</h.Menu>
       </h.BottomMenues>
-      <h.LifeQuotes>
-        <div>{`감정은 사실이 아니다. 생각을바꾸면 감정도 바뀐다.`}</div>
-        <div>{`(데이비드 D.번스)`}</div>
-      </h.LifeQuotes>
+      {quote && (
+        <h.LifeQuotes>
+          <div>{quote.quote}</div>
+          <h.Author>{quote.author}</h.Author>
+        </h.LifeQuotes>
+      )}
     </Layout>
   );
 };
