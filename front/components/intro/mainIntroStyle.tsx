@@ -1,4 +1,7 @@
 import styled, { keyframes } from 'styled-components';
+const breakpoints = [480, 768, 992, 1280];
+const media = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
+
 const fadeOut = keyframes`
   from {
     opacity: 1;
@@ -32,5 +35,8 @@ export const MainImg = styled.img`
   @media (max-height: 850px) {
     position: fixed;
     bottom: -100px;
+  }
+  ${media[2]} {
+    width: 391px;
   }
 `;
