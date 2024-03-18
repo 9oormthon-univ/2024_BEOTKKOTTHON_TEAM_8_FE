@@ -75,8 +75,8 @@ export const Button = styled.button`
   padding: 1rem 0;
 `;
 
-export const BtnWrapper = styled.div`
-  cursor: pointer;
+export const BtnWrapper = styled.div<{ disable: boolean }>`
+  cursor: ${(props) => !props.disable && 'pointer'};
   position: absolute;
   width: 100%;
 
