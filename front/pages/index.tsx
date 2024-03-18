@@ -1,14 +1,29 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import { useState, useEffect } from 'react';
+import Layout from '@/layout';
+import MainIntro from '@/components/intro/mainIntro';
+import TextIntro from '@/components/intro/textIntro';
+import LoginOption from '@/components/LoginOptions';
 
-const inter = Inter({ subsets: ["latin"] });
+const Intro = () => {
+  const [showMainIntro, setShoMainIntro] = useState(true);
+  const [showLoginOption, setShowLoginOption] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShoMainIntro(false);
+    }, 2000);
 
-export default function Home() {
+    return () => clearTimeout(timer);
+  });
   return (
-    <>
-      
-    </>
+    <Layout isHeader={false}>
+      {showMainIntro ? (
+        <MainIntro />
+      ) : (
+        <TextIntro onAnimationFinish={() => setShowLoginOption(true)} />
+      )}
+      {showLoginOption && <LoginOption />}
+    </Layout>
   );
-}
+};
+
+export default Intro;
