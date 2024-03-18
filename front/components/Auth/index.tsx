@@ -59,7 +59,8 @@ const Auth = (props: Props) => {
 
   /** 보관함 만들기 - 걱정 시간 설정 페이지로 이동 */
   const handleGoToTimeSetup = () => {
-    if (!isCheck) return setMessage('별명 중복을 확인해줘');
+    if (nickname.length > 0 && !isCheck)
+      return setMessage('별명 중복을 확인해줘');
 
     if (!isAvailable) return;
 
