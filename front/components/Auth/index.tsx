@@ -22,6 +22,7 @@ const Auth = (props: Props) => {
   const [nickname, setNickname] = useRecoilState(nameState);
   const [pwd, setPwd] = useRecoilState(passwordState);
   const [message, setMessage] = useState<string>('');
+  const [isAvailable, setIsAvailable] = useState<boolean>(true);
 
   const query: ParsedUrlQueryInput = {
     name: nickname,
@@ -37,7 +38,10 @@ const Auth = (props: Props) => {
           console.log(res);
 
           if (res.data.code === 200) setMessage('사용 가능한 별명이야');
-          if (res.data.code === 4001) setMessage('이미 사용 중인 별명이야');
+          if (res.data.code === 4001) {
+            setIsAvailable(false);
+            setMessage('이미 사용 중인 별명이야');
+          }
         })
         .catch((err) => {
           console.error(err);
@@ -45,8 +49,10 @@ const Auth = (props: Props) => {
     } else setMessage('내용을 입력해줘');
   };
 
-  /** 보관함 만들기 - 걱정 시간 입력 */
-  const handleTimeSetting = () => {
+  /** 보관함 만들기 - 걱정 시간 설정 페이지로 이동 */
+  const handleGoToTimeSetup = () => {
+    if (!isAvailable) return;
+
     if (nickname.length > 0 && pwd.length === 4) {
       router.push(
         {
@@ -120,7 +126,7 @@ const Auth = (props: Props) => {
           </S.InputContainer>
         </S.Content>
         {!props.isLogin ? (
-          <S.BtnWrapper onClick={handleTimeSetting}>
+          <S.BtnWrapper onClick={handleGoToTimeSetup}>
             <RightBtnSVG />
           </S.BtnWrapper>
         ) : (
