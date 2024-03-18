@@ -5,6 +5,7 @@ import {
   currentWorryTimeState,
   nameState,
   passwordState,
+  userIdState,
 } from '@/recoil/states';
 import { api } from '@/apis/api';
 import * as S from './styles';
@@ -25,6 +26,7 @@ const WorryTimeSetter = (props: Props) => {
 
   const setName = useSetRecoilState(nameState);
   const setPassword = useSetRecoilState(passwordState);
+  const setUserId = useSetRecoilState(userIdState);
 
   const [startHour, setStartHour] = useState<number>(1);
   const [startMinute, setStartMinute] = useState<string>('00');
@@ -51,7 +53,7 @@ const WorryTimeSetter = (props: Props) => {
           endTime: `${currentWorryTime[0]}:${currentWorryTime[1]}${currentWorryTime[2]}`,
         })
         .then((res) => {
-          console.log(res);
+          setUserId(res.data.result.userId);
           setName('');
           setPassword('');
         })

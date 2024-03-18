@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useRecoilState } from 'recoil';
-import { nameState, passwordState } from '@/recoil/states';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { nameState, passwordState, userIdState } from '@/recoil/states';
 import { ParsedUrlQueryInput } from 'querystring';
 
 import * as S from './styles';
@@ -22,6 +22,7 @@ const Auth = (props: Props) => {
   const [nickname, setNickname] = useRecoilState(nameState);
   const [pwd, setPwd] = useRecoilState(passwordState);
   const [message, setMessage] = useState<string>('');
+  const setUserId = useSetRecoilState(userIdState);
   const [isAvailable, setIsAvailable] = useState<boolean>(true);
 
   const query: ParsedUrlQueryInput = {
@@ -37,7 +38,10 @@ const Auth = (props: Props) => {
         .then((res) => {
           console.log(res);
 
-          if (res.data.code === 200) setMessage('사용 가능한 별명이야');
+          if (res.data.code === 200) {
+            setIsAvailable(true);
+            setMessage('사용 가능한 별명이야');
+          }
           if (res.data.code === 4001) {
             setIsAvailable(false);
             setMessage('이미 사용 중인 별명이야');
@@ -81,6 +85,8 @@ const Auth = (props: Props) => {
           if (res.data.code >= 4000) {
             setMessage('별명과 비밀번호를 다시 확인해줘');
           }
+
+          setUserId(res.data.result.userId);
         })
         .catch((err) => {
           console.error(err);
