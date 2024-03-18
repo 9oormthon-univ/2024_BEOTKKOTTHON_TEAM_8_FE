@@ -11,11 +11,11 @@ import {
 } from './textIntroStyle';
 import { useEffect } from 'react';
 
-interface TextIntroProps {
+const TextIntro = ({
+  onAnimationFinish,
+}: {
   onAnimationFinish: () => void;
-}
-
-const TextIntro: React.FC<TextIntroProps> = ({ onAnimationFinish }) => {
+}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onAnimationFinish();
