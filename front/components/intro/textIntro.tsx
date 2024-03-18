@@ -9,8 +9,20 @@ import {
   SecondSubTxt,
   ThirdSubTxt,
 } from './textIntroStyle';
+import { useEffect } from 'react';
 
-const TextIntro = () => {
+interface TextIntroProps {
+  onAnimationFinish: () => void;
+}
+
+const TextIntro: React.FC<TextIntroProps> = ({ onAnimationFinish }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onAnimationFinish();
+    }, 9500);
+
+    return () => clearTimeout(timer);
+  }, [onAnimationFinish]);
   return (
     <div>
       <First>
