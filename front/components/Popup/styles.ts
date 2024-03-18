@@ -20,7 +20,7 @@ export const Bubble = styled.div<{ topSize: number; isFadeOut: boolean }>`
     content: '';
     position: absolute;
     top: 2.3rem;
-    left: 50%;
+    left: 46%;
 
     border-top: 10px solid rgba(0, 0, 0, 0.1);
     border-left: 10px solid transparent;
