@@ -1,4 +1,6 @@
 import styled, { keyframes } from 'styled-components';
+const breakpoints = [480, 768, 992, 1280];
+const media = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
 
 const fadeIn = keyframes`
   from{

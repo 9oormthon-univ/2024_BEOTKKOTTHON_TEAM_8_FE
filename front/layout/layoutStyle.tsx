@@ -17,6 +17,7 @@ export const Totalframe = styled.div`
     display: none;
   }
   ${media[2]} {
+    position: relative;
     width: 391px;
   }
 `;
