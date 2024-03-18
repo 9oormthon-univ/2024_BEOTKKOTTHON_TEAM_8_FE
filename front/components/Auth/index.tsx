@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { nameState, passwordState } from '@/recoil/states';
 import { ParsedUrlQueryInput } from 'querystring';
 
 import * as S from './styles';
@@ -17,8 +19,8 @@ interface Props {
 const Auth = (props: Props) => {
   const router = useRouter();
 
-  const [nickname, setNickname] = useState<string>('');
-  const [pwd, setPwd] = useState<string>('');
+  const [nickname, setNickname] = useRecoilState(nameState);
+  const [pwd, setPwd] = useRecoilState(passwordState);
   const [message, setMessage] = useState<string>('');
 
   const query: ParsedUrlQueryInput = {

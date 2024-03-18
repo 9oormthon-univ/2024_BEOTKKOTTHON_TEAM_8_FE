@@ -1,6 +1,11 @@
 import { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { currentWorryTimeState } from '@/recoil/states';
+import { useRouter } from 'next/router';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import {
+  currentWorryTimeState,
+  nameState,
+  passwordState,
+} from '@/recoil/states';
 import { api } from '@/apis/api';
 import * as S from './styles';
 
@@ -14,7 +19,12 @@ interface Props {
 }
 
 const WorryTimeSetter = (props: Props) => {
+  const router = useRouter();
+
   const [worryTimeText, setWorryTimeText] = useState('시작할 시간');
+
+  const setName = useSetRecoilState(nameState);
+  const setPassword = useSetRecoilState(passwordState);
 
   const [startHour, setStartHour] = useState<number>(1);
   const [startMinute, setStartMinute] = useState<string>('00');
@@ -26,18 +36,28 @@ const WorryTimeSetter = (props: Props) => {
 
   const onPrev = () => {
     setWorryTimeText('시작할 시간');
-
     setCurrentWorryTime([startHour.toString(), startMinute, startAmPm]);
+
+    router.push('/signup');
   };
 
   const onNext = () => {
     if (worryTimeText === '마칠 시간') {
-      api.post('/users/join', {
-        name: props.name,
-        password: props.password,
-        startTime: `${startHour}:${startMinute}${startAmPm}`,
-        endTime: `${currentWorryTime[0]}:${currentWorryTime[1]}${currentWorryTime[2]}`,
-      });
+      api
+        .post('/users/join', {
+          name: props.name,
+          password: props.password,
+          startTime: `${startHour}:${startMinute}${startAmPm}`,
+          endTime: `${currentWorryTime[0]}:${currentWorryTime[1]}${currentWorryTime[2]}`,
+        })
+        .then((res) => {
+          console.log(res);
+          setName('');
+          setPassword('');
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     } else {
       setWorryTimeText('마칠 시간');
 
