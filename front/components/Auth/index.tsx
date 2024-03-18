@@ -24,8 +24,8 @@ const Auth = (props: Props) => {
   const [pwd, setPwd] = useRecoilState(passwordState);
   const [message, setMessage] = useState<string>('');
   const setUserId = useSetRecoilState(userIdState);
-  const [isCheck, setIsCheck] = useState<boolean>(false);
-  const [isAvailable, setIsAvailable] = useState<boolean>(true);
+  const [isCheck, setIsCheck] = useState<boolean>(false); // 별명 중복 체크 했는지
+  const [isAvailable, setIsAvailable] = useState<boolean>(true); // 사용 가능한 별명인지
 
   const query: ParsedUrlQueryInput = {
     name: nickname,
@@ -140,7 +140,7 @@ const Auth = (props: Props) => {
         {!props.isLogin ? (
           <S.BtnWrapper
             onClick={handleGoToTimeSetup}
-            disable={!isAvailable || !isCheck}>
+            disabled={!isAvailable || !isCheck}>
             {!isAvailable || !isCheck ? <RightBtnDisSVG /> : <RightBtnSVG />}
           </S.BtnWrapper>
         ) : (
