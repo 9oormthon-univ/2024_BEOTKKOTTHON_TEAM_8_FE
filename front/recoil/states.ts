@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 
-export const userIdState = atom({
+export const userIdState = atom<number>({
   key: 'userIdState',
-  default: '',
+  default: 0,
 });
 
 export const currentWorryTimeState = atom<string[]>({
