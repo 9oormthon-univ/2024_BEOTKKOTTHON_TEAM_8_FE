@@ -5,11 +5,11 @@ import TextIntro from '@/components/intro/textIntro';
 import LoginOption from '@/components/LoginOptions';
 
 const Intro = () => {
-  const [showMainIntro, setShoMainIntro] = useState(true);
+  const [showMainIntro, setShowMainIntro] = useState(true);
   const [showLoginOption, setShowLoginOption] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShoMainIntro(false);
+      setShowMainIntro(false);
     }, 2000);
 
     return () => clearTimeout(timer);
