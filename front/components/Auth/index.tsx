@@ -82,10 +82,10 @@ const Auth = (props: Props) => {
 
   return (
     <S.Container>
-      {message && (
-        <Popup text={message} topSize={12} onClose={() => setMessage('')} />
-      )}
       <S.Box>
+        {message && (
+          <Popup text={message} topSize={-6} onClose={() => setMessage('')} />
+        )}
         <S.Content>
           <S.InputContainer>
             <S.Title>{props.nicknameTitle}</S.Title>
