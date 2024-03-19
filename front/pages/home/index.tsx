@@ -11,8 +11,13 @@ interface Time {
   secDiff: number;
 }
 
+interface Quote {
+  quote: string;
+  author: string;
+}
+
 const Home = () => {
-  const [quote, setQuote] = useState({});
+  const [quote, setQuote] = useState<Quote | null>(null);
   const [openRemainTime, setOpenRemainTime] = useState<Time | null>(null);
   const [isOpenTime, setIsOpenTime] = useState<Boolean>(false);
   const startTime = useRecoilValue(startTimeState);
