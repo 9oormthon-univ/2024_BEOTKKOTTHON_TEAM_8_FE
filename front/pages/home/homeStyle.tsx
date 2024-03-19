@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+const breakpoints = [480, 768, 992, 1280];
+const media = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
 
 export const SubTitle = styled.div`
   font-size: 1.2rem;
@@ -16,6 +18,9 @@ export const MainImg = styled.img`
   position: absolute;
   width: 100%;
   bottom: 0;
+  ${media[2]} {
+    width: 391px;
+  }
 `;
 export const BottomMenues = styled.div`
   display: flex;
