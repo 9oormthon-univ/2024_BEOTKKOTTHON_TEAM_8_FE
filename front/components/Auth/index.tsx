@@ -6,6 +6,7 @@ import { ParsedUrlQueryInput } from 'querystring';
 
 import * as S from './styles';
 import RightBtnSVG from '../../public/assets/icons/RightBtn.svg';
+import RightBtnDisSVG from '../../public/assets/icons/RightBtn_dis.svg';
 import Popup from '../Popup';
 
 import { api } from '@/apis/api';
@@ -23,7 +24,8 @@ const Auth = (props: Props) => {
   const [pwd, setPwd] = useRecoilState(passwordState);
   const [message, setMessage] = useState<string>('');
   const setUserId = useSetRecoilState(userIdState);
-  const [isAvailable, setIsAvailable] = useState<boolean>(true);
+  const [isCheck, setIsCheck] = useState<boolean>(false); // 별명 중복 체크 했는지
+  const [isAvailable, setIsAvailable] = useState<boolean>(true); // 사용 가능한 별명인지
 
   const query: ParsedUrlQueryInput = {
     name: nickname,
@@ -32,6 +34,8 @@ const Auth = (props: Props) => {
 
   /** 보관함 만들기 - (별명 중복 체크) 확인 버튼 */
   const handleCheck = () => {
+    setIsCheck(true);
+
     if (nickname.length > 0) {
       api
         .post('/users/name-check', { name: nickname })
@@ -55,6 +59,9 @@ const Auth = (props: Props) => {
 
   /** 보관함 만들기 - 걱정 시간 설정 페이지로 이동 */
   const handleGoToTimeSetup = () => {
+    if (nickname.length > 0 && !isCheck)
+      return setMessage('별명 중복을 확인해줘');
+
     if (!isAvailable) return;
 
     if (nickname.length > 0 && pwd.length === 4) {
@@ -132,8 +139,10 @@ const Auth = (props: Props) => {
           </S.InputContainer>
         </S.Content>
         {!props.isLogin ? (
-          <S.BtnWrapper onClick={handleGoToTimeSetup}>
-            <RightBtnSVG />
+          <S.BtnWrapper
+            onClick={handleGoToTimeSetup}
+            disabled={!isAvailable || !isCheck}>
+            {!isAvailable || !isCheck ? <RightBtnDisSVG /> : <RightBtnSVG />}
           </S.BtnWrapper>
         ) : (
           <S.Button onClick={handleLogin}>확인</S.Button>

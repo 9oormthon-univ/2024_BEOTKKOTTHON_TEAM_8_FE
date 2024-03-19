@@ -82,10 +82,10 @@ const WorryTimeSetter = (props: Props) => {
           <TimePicker />
         </S.TimePickerWrapper>
         <S.BtnContainer>
-          <div onClick={onPrev}>
+          <div onClick={onPrev} style={{ cursor: 'pointer' }}>
             <LeftBtnSVG />
           </div>
-          <div onClick={onNext}>
+          <div onClick={onNext} style={{ cursor: 'pointer' }}>
             <RightBtnSVG />
           </div>
         </S.BtnContainer>
