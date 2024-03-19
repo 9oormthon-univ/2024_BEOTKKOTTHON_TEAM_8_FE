@@ -25,8 +25,14 @@ export const Line = styled.div`
   justify-content: center;
 `;
 export const HeaderName = styled.div`
+  position: relative;
   font-size: 1.2rem;
   color: #000;
   opacity: 50%;
   white-space: nowrap;
+`;
+export const Circle = styled.img`
+  position: absolute;
+  top: 6.1rem;
+  z-index: 1;
 `;
