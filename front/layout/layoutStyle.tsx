@@ -21,3 +21,7 @@ export const Totalframe = styled.div`
     width: 391px;
   }
 `;
+
+export const Innerframe = styled.div`
+  height: calc(100vh - 9.38rem);
+`;
