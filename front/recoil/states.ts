@@ -30,3 +30,8 @@ export const passwordState = atom<string>({
   key: 'passwordState',
   default: '',
 });
+
+export const isTodayLetterNoticeViewState = atom<boolean>({
+  key: 'isTodayLetterNoticeViewState',
+  default: false,
+});
