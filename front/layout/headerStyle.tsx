@@ -28,4 +28,5 @@ export const HeaderName = styled.div`
   font-size: 1.2rem;
   color: #000;
   opacity: 50%;
+  white-space: nowrap;
 `;
