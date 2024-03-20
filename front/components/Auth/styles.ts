@@ -47,6 +47,7 @@ export const Input = styled.input`
   width: 20.8rem;
   border: none;
   background: none;
+  outline: none;
   border-bottom: 0.15rem solid rgba(0, 0, 0, 0.2);
   padding-bottom: 0.8rem;
   text-align: center;
@@ -75,8 +76,8 @@ export const Button = styled.button`
   padding: 1rem 0;
 `;
 
-export const BtnWrapper = styled.div`
-  cursor: pointer;
+export const BtnWrapper = styled.div<{ disabled: boolean }>`
+  cursor: ${(props) => !props.disabled && 'pointer'};
   position: absolute;
   width: 100%;
 
