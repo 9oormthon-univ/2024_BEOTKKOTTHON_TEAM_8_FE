@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { nameState, passwordState, userIdState } from '@/recoil/states';
+import {
+  nameState,
+  passwordState,
+  userIdState,
+  endTimeState,
+  startTimeState,
+} from '@/recoil/states';
 import { ParsedUrlQueryInput } from 'querystring';
 
 import * as S from './styles';
@@ -22,6 +28,8 @@ const Auth = (props: Props) => {
 
   const [nickname, setNickname] = useRecoilState(nameState);
   const [pwd, setPwd] = useRecoilState(passwordState);
+  const [endTime, setEndTime] = useRecoilState(endTimeState);
+  const [startTime, setStartTime] = useRecoilState(startTimeState);
   const [message, setMessage] = useState<string>('');
   const setUserId = useSetRecoilState(userIdState);
   const [isCheck, setIsCheck] = useState<boolean>(false); // 별명 중복 체크 했는지
@@ -88,7 +96,11 @@ const Auth = (props: Props) => {
         .post('/users/login', { name: nickname, password: pwd })
         .then((res) => {
           console.log(res);
-
+          if (res.data.code == 200) {
+            router.push('/home');
+            setEndTime(res.data.result.endTime);
+            setStartTime(res.data.result.startTime);
+          }
           if (res.data.code >= 4000) {
             setMessage('별명과 비밀번호를 다시 확인해줘');
           }

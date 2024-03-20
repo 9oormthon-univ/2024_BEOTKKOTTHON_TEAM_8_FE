@@ -35,3 +35,13 @@ export const isTodayLetterNoticeViewState = atom<boolean>({
   key: 'isTodayLetterNoticeViewState',
   default: false,
 });
+
+export const endTimeState = atom<string>({
+  key: 'endTimeState',
+  default: '',
+});
+
+export const startTimeState = atom<string>({
+  key: 'startTimeState',
+  default: '',
+});
