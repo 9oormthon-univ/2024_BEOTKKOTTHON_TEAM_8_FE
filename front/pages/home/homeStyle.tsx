@@ -2,10 +2,19 @@ import styled from 'styled-components';
 const breakpoints = [480, 768, 992, 1280];
 const media = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
 
+export const FullImg = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
+export const ReportImg = styled.img`
+  margin-right: 1.2rem;
+  margin-bottom: 1.5rem;
+`;
 export const SubTitle = styled.div`
   font-size: 1.2rem;
   color: rgba(0, 0, 0, 0.5);
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
   margin-bottom: 1rem;
   text-align: center;
 `;

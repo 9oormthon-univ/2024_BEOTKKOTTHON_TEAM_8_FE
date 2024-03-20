@@ -88,6 +88,9 @@ const Home = () => {
 
   return (
     <Layout isHeader={true}>
+      <h.FullImg>
+        <h.ReportImg src={'/reportBtn.svg'} />
+      </h.FullImg>
       {isOpenTime ? (
         <h.SubTitle>{`보관함이 닫히기까지`}</h.SubTitle>
       ) : (
