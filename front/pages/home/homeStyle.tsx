@@ -48,6 +48,7 @@ export const BottomMenues = styled.div`
   }
 `;
 export const Menu = styled.div`
+  position: relative;
   width: 10.9rem;
   height: 37px;
   font-size: 1.6rem;
@@ -57,6 +58,19 @@ export const Menu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+export const WorryCount = styled.div`
+  position: absolute;
+  width: 21.84px;
+  height: 21.84px;
+  border-radius: 50%;
+  background: #869daa;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+  right: -0.6rem;
+  top: -0.7rem;
 `;
 export const LifeQuotes = styled.div`
   position: absolute;
