@@ -39,9 +39,11 @@ export const isTodayLetterNoticeViewState = atom<boolean>({
 export const endTimeState = atom<string>({
   key: 'endTimeState',
   default: '',
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const startTimeState = atom<string>({
   key: 'startTimeState',
   default: '',
+  effects_UNSTABLE: [persistAtom],
 });

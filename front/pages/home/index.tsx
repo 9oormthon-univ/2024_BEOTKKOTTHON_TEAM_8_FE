@@ -6,9 +6,9 @@ import { endTimeState, startTimeState } from '@/recoil/states';
 import { useRecoilValue } from 'recoil';
 
 interface Time {
-  hourDiff: number;
-  minDiff: number;
-  secDiff: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
 }
 
 interface Quote {
@@ -20,8 +20,27 @@ const Home = () => {
   const [quote, setQuote] = useState<Quote | null>(null);
   const [openRemainTime, setOpenRemainTime] = useState<Time | null>(null);
   const [isOpenTime, setIsOpenTime] = useState<Boolean>(false);
-  const startTime = useRecoilValue(startTimeState);
-  const endTime = useRecoilValue(endTimeState);
+  const [startHour, startMin] = useRecoilValue(startTimeState)
+    .split(':')
+    .map(Number);
+  const [endHour, endMin] = useRecoilValue(endTimeState).split(':').map(Number);
+
+  const openTime = new Date();
+  openTime.setHours(startHour, startMin, 0);
+  const closeTime = new Date();
+  closeTime.setHours(endHour, endMin, 0);
+
+  const isBetween = (
+    openTime: Date,
+    closeTime: Date,
+    currentTime: Date,
+  ): boolean => {
+    return currentTime >= openTime && currentTime <= closeTime;
+  };
+  // 현재 시간을 반환하는 함수
+  const getCurrentTime = (): Date => {
+    return new Date();
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -34,53 +53,31 @@ const Home = () => {
 
   useEffect(() => {
     const intervaltime = setInterval(() => {
-      const now = new Date();
-      const nowHour = now.getHours();
-      const nowMin = now.getMinutes();
-      const nowSec = now.getSeconds();
-      const [startHour, startMin] = startTime.split(':').map(Number);
-      const [endHour, endMin] = endTime.split(':').map(Number);
-
-      //if가 true면 보관함 닫혀있는 상태
-      if (
-        startHour <= nowHour &&
-        startMin <= nowMin &&
-        endHour >= nowHour &&
-        endMin >= nowMin
-      ) {
+      const currentTime = getCurrentTime();
+      if (isBetween(openTime, closeTime, currentTime)) {
+        //닫히기까지 nn분
         setIsOpenTime(true);
-        let hourDiff = endHour - nowHour;
-        let minDiff = endMin - nowMin;
-        const secDiff = 60 - nowSec;
-        setOpenRemainTime({
-          hourDiff,
-          minDiff,
-          secDiff,
-        });
-        if (hourDiff < 0) {
-          hourDiff += 24;
-        }
-        if (minDiff < 0) {
-          hourDiff--;
-          minDiff += 60;
-        }
+        let timeDiff = closeTime.getTime() - currentTime.getTime();
+        let hours = Math.floor(timeDiff / (1000 * 60 * 60));
+        let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        if (hours < 0) hours += 24;
+        if (minutes < 0) minutes += 60;
+        if (seconds < 0) seconds += 60;
+        setOpenRemainTime({ hours, minutes, seconds });
       } else {
-        setIsOpenTime(false); //열리기까지 nn분 남음
-        let hourDiff = startHour - nowHour;
-        let minDiff = startMin - nowMin;
-        const secDiff = 60 - nowSec;
-        if (hourDiff < 0) {
-          hourDiff += 24;
-        }
-        if (minDiff < 0) {
-          hourDiff--;
-          minDiff += 60;
-        }
-        setOpenRemainTime({
-          hourDiff,
-          minDiff,
-          secDiff,
-        });
+        //열리기까지 nn분
+        setIsOpenTime(false);
+        let timeDiff = openTime.getTime() - currentTime.getTime();
+        let hours = Math.floor(timeDiff / (1000 * 60 * 60));
+        let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        if (hours < 0) hours += 24;
+        if (minutes < 0) minutes += 60;
+        if (seconds < 0) seconds += 60;
+        setOpenRemainTime({ hours, minutes, seconds });
       }
     }, 1000);
     return () => clearInterval(intervaltime);
@@ -96,7 +93,7 @@ const Home = () => {
       ) : (
         <h.SubTitle>{`보관함이 열리기까지`}</h.SubTitle>
       )}
-      <h.Time>{`${openRemainTime?.hourDiff}시간 ${openRemainTime?.minDiff}분 ${openRemainTime?.secDiff}초`}</h.Time>
+      <h.Time>{`${openRemainTime?.hours}시간 ${openRemainTime?.minutes}분 ${openRemainTime?.seconds}초`}</h.Time>
       <h.MainImg src="/birdBox.svg" />
       <h.BottomMenues>
         <h.Menu>{`걱정 넣기`}</h.Menu>
