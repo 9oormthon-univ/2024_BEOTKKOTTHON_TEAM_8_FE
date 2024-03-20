@@ -18,6 +18,10 @@ export const MainImg = styled.img`
   position: absolute;
   width: 100%;
   bottom: 0;
+  @media (max-height: 715px) {
+    position: fixed;
+    bottom: -80px;
+  }
   ${media[2]} {
     width: 391px;
   }
@@ -30,6 +34,9 @@ export const BottomMenues = styled.div`
   position: absolute;
   bottom: 23.17vh;
   width: 100%;
+  @media (max-height: 715px) {
+    bottom: 19.17vh;
+  }
 `;
 export const Menu = styled.div`
   width: 10.9rem;
@@ -49,6 +56,9 @@ export const LifeQuotes = styled.div`
   color: rgba(255, 255, 255, 0.5);
   font-size: 1.2rem;
   width: 100%;
+  @media (max-height: 715px) {
+    bottom: 10.6vh;
+  }
 `;
 export const Author = styled.div`
   margin-top: 10px;
