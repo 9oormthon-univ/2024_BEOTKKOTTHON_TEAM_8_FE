@@ -8,9 +8,14 @@ import BirdAdviceMessage from '@/components/BirdAdviceMessage';
 import SolutionBox from '@/components/SolutionBox';
 import Layout from '@/layout';
 
+interface Item {
+  createAt: string;
+  worryText: string;
+}
+
 const Home = () => {
   const userId = useRecoilValue(userIdState);
-  const [worryData, setWorryData] = useState([]);
+  const [worryData, setWorryData] = useState<Item[]>([]);
   const [advice, setAdvice] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 1;
