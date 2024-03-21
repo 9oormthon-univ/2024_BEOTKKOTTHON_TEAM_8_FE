@@ -60,37 +60,51 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const intervaltime = setInterval(() => {
+    const currentTime = getCurrentTime();
+    let isOpen = isBetween(openTime, closeTime, currentTime);
+    const timeDiff = isOpen
+      ? closeTime.getTime() - currentTime.getTime()
+      : openTime.getTime() - currentTime.getTime();
+
+    let hours = Math.floor(timeDiff / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    if (hours < 0) hours += 24;
+    if (minutes < 0) minutes += 60;
+    if (seconds < 0) seconds += 60;
+
+    setOpenRemainTime({ hours, minutes, seconds });
+    setIsOpenTime(isOpen);
+    setMessage(
+      isOpen ? '보관함을 열고 걱정을 확인해 봐' : '시간이 지나 보관함이 닫혔어',
+    );
+
+    const intervalTime = setInterval(() => {
       const currentTime = getCurrentTime();
-      if (isBetween(openTime, closeTime, currentTime)) {
-        //닫히기까지 nn분
-        setIsOpenTime(true);
-        let timeDiff = closeTime.getTime() - currentTime.getTime();
-        let hours = Math.floor(timeDiff / (1000 * 60 * 60));
-        let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      let isOpen = isBetween(openTime, closeTime, currentTime);
+      const timeDiff = isOpen
+        ? closeTime.getTime() - currentTime.getTime()
+        : openTime.getTime() - currentTime.getTime();
 
-        if (hours < 0) hours += 24;
-        if (minutes < 0) minutes += 60;
-        if (seconds < 0) seconds += 60;
-        setOpenRemainTime({ hours, minutes, seconds });
-        setMessage('보관함을 열고 걱정을 확인해 봐');
-      } else {
-        //열리기까지 nn분
-        setIsOpenTime(false);
-        let timeDiff = openTime.getTime() - currentTime.getTime();
-        let hours = Math.floor(timeDiff / (1000 * 60 * 60));
-        let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      let hours = Math.floor(timeDiff / (1000 * 60 * 60));
+      let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        if (hours < 0) hours += 24;
-        if (minutes < 0) minutes += 60;
-        if (seconds < 0) seconds += 60;
-        setOpenRemainTime({ hours, minutes, seconds });
-        setMessage('시간이 지나 보관함이 닫혔어');
-      }
+      if (hours < 0) hours += 24;
+      if (minutes < 0) minutes += 60;
+      if (seconds < 0) seconds += 60;
+
+      setOpenRemainTime({ hours, minutes, seconds });
+      setIsOpenTime(isOpen);
+      setMessage(
+        isOpen
+          ? '보관함을 열고 걱정을 확인해 봐'
+          : '시간이 지나 보관함이 닫혔어',
+      );
     }, 1000);
-    return () => clearInterval(intervaltime);
+
+    return () => clearInterval(intervalTime);
   }, []);
 
   //3일지난 메시지 개수
