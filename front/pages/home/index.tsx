@@ -51,13 +51,12 @@ const Home = () => {
   };
   //3초마다 명언 랜덤 출력
   useEffect(() => {
-    const randomIdx = Math.floor(Math.random() * quotesData.length);
-    setQuote(quotesData[randomIdx]);
-    const intervalId = setInterval(() => {
+    const setRandomQuote = () => {
       const randomIdx = Math.floor(Math.random() * quotesData.length);
       setQuote(quotesData[randomIdx]);
-    }, 3000);
-
+    };
+    setRandomQuote();
+    const intervalId = setInterval(setRandomQuote, 3000);
     return () => clearInterval(intervalId);
   }, []);
 
