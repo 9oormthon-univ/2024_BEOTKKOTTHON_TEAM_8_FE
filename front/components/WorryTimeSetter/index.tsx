@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useRecoilState, useSetRecoilState } from 'recoil';
+import Image from 'next/image';
 import {
   currentWorryTimeState,
   passwordState,
@@ -80,10 +81,10 @@ const WorryTimeSetter = (props: Props) => {
 
       <S.BtnContainer>
         <div onClick={onPrev} style={{ cursor: 'pointer' }}>
-          <LeftBtnSVG />
+          <Image src={LeftBtnSVG} alt="leftBtn" />
         </div>
         <div onClick={onNext} style={{ cursor: 'pointer' }}>
-          <RightBtnSVG />
+          <Image src={RightBtnSVG} alt="rightBtn" />
         </div>
       </S.BtnContainer>
     </S.Container>

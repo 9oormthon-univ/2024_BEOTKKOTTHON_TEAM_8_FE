@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import {
   nameState,
@@ -192,9 +193,9 @@ const Auth = (props: Props) => {
             !isValid ||
             nickname.length === 0 ||
             pwd.length === 0 ? (
-              <RightBtnDisSVG />
+              <Image src={RightBtnDisSVG} alt="btn" />
             ) : (
-              <RightBtnSVG />
+              <Image src={RightBtnSVG} alt="btn" />
             )}
           </S.BtnWrapper>
         ) : (
