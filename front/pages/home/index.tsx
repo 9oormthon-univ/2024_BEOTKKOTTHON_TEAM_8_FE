@@ -49,8 +49,10 @@ const Home = () => {
   const getCurrentTime = (): Date => {
     return new Date();
   };
-
+  //3초마다 명언 랜덤 출력
   useEffect(() => {
+    const randomIdx = Math.floor(Math.random() * quotesData.length);
+    setQuote(quotesData[randomIdx]);
     const intervalId = setInterval(() => {
       const randomIdx = Math.floor(Math.random() * quotesData.length);
       setQuote(quotesData[randomIdx]);
