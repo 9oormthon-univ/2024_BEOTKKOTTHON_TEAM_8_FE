@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import styled from 'styled-components';
+
 import { isTodayLetterNoticeViewState, userIdState } from '@/recoil/states';
 import Layout from '@/layout';
 import { api } from '@/apis/api';
-
 import TodayNewLetterNotice from '@/components/TodayNewLetterNotice';
 import BirdMessenger from '@/components/BirdMessenger';
 import PastLetters from '@/components/PastLetters';
@@ -15,6 +16,16 @@ interface LetterProps {
   sendDate: string;
   userId: number;
 }
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const PastLetter = () => {
   const userId = useRecoilValue(userIdState);
@@ -53,13 +64,15 @@ const PastLetter = () => {
 
   return (
     <Layout isHeader={true}>
-      {isTodayLetterNoticeView ? (
-        <TodayNewLetterNotice />
-      ) : hasLetter ? (
-        <PastLetters letters={letters} />
-      ) : (
-        <BirdMessenger isPast={true} />
-      )}
+      <Container>
+        {isTodayLetterNoticeView ? (
+          <TodayNewLetterNotice />
+        ) : hasLetter ? (
+          <PastLetters letters={letters} />
+        ) : (
+          <BirdMessenger isPast={true} />
+        )}
+      </Container>
     </Layout>
   );
 };
