@@ -17,6 +17,11 @@ export const userIdState = atom<number>({
 
 export const currentWorryTimeState = atom<string[]>({
   key: 'currentWorryTimeState',
+  default: ['1', '00', 'AM'],
+});
+
+export const userSelectedDateState = atom<string[]>({
+  key: 'userSelectedDateState',
   default: [],
 });
 
