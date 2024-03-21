@@ -7,10 +7,10 @@ export const BubbleContainer = styled.div<{ topSize: number }>`
   top: ${(props) => `${props.topSize}rem`};
   justify-content: center;
   align-items: center;
+  gap: 3px;
 `;
 
 export const Bubble = styled.div`
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,9 +29,4 @@ export const Bubble = styled.div`
     border-right: 10px solid transparent;
     border-bottom: 0px solid transparent;
   }
-`;
-
-export const Close = styled.img`
-  position: absolute;
-  left: calc(100% - 12.5rem);
 `;

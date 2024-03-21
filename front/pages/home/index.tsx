@@ -122,7 +122,7 @@ const Home = () => {
         <h.SubTitle>{`보관함이 열리기까지`}</h.SubTitle>
       )}
       <h.Time>{`${openRemainTime?.hours}시간 ${openRemainTime?.minutes}분 ${openRemainTime?.seconds}초`}</h.Time>
-      {message && <MainPopup text={message} topSize={7} />}
+      {message && <MainPopup text={message} topSize={4} />}
       <h.MainImg src="/birdBox.svg" />
       <h.BottomMenues>
         <h.Menu
