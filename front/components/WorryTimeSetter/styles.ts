@@ -7,6 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 7.5rem;
 `;
 
 export const Box = styled.div`
@@ -18,18 +19,26 @@ export const TitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 export const Title = styled.h1`
+  font-weight: 400;
   font-size: 2.8rem;
+  line-height: 28px;
+  text-align: center;
+
+  color: rgba(0, 0, 0, 0.5);
 `;
 
 export const SubTitle = styled.h2`
+  font-weight: 400;
   font-size: 1.6rem;
-`;
+  line-height: 16px;
+  text-align: center;
 
-export const TimePickerWrapper = styled.div``;
+  color: rgba(0, 0, 0, 0.5);
+`;
 
 export const BtnContainer = styled.div`
   width: 100%;
@@ -37,5 +46,5 @@ export const BtnContainer = styled.div`
   display: flex;
   justify-content: end;
   gap: 1.3rem;
-  padding-right: 4rem;
+  padding-right: 6.4rem;
 `;
