@@ -36,7 +36,20 @@ export const isTodayLetterNoticeViewState = atom<boolean>({
   default: false,
 });
 
+
+export const endTimeState = atom<string>({
+  key: 'endTimeState',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const startTimeState = atom<string>({
+  key: 'startTimeState',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
+
 export const isWorryMemoSendState = atom<boolean>({
   key: 'isWorryMemoSendState',
   default: false,
+
 });
