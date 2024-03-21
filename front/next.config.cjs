@@ -2,7 +2,19 @@ const withPWA = require('next-pwa');
 const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
-  // ...원래 next config 파일
+  reactStrictMode: true,
+  swcMinify: true,
+  compiler: {
+    styledComponents: true,
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
 };
 
 const nextConfig = withPWA({

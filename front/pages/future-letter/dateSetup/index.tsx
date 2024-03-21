@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import LetterDateSetter from '@/components/LetterDateSetter';
 import Layout from '@/layout';
 import RightBtnSVG from '../../../public/assets/icons/rightBtn.svg';
@@ -33,7 +34,7 @@ const DateSetUp = () => {
       <Contatiner>
         <LetterDateSetter />
         <BtnWraaper onClick={() => router.push('/future-letter/write')}>
-          <RightBtnSVG />
+          <Image src={RightBtnSVG} alt="rightBtn" />
         </BtnWraaper>
       </Contatiner>
     </Layout>

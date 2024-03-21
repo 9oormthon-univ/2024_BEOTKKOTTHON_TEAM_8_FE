@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
@@ -90,10 +91,10 @@ const Write = () => {
             <div
               onClick={() => router.push('/future-letter/dateSetup')}
               style={{ cursor: 'pointer' }}>
-              <LeftBtnSVG />
+              <Image src={LeftBtnSVG} alt="leftBtn" />
             </div>
             <div onClick={handleSend} style={{ cursor: 'pointer' }}>
-              <RightBtnSVG />
+              <Image src={RightBtnSVG} alt="rightBtn" />
             </div>
           </BtnWraaper>
         </Box>

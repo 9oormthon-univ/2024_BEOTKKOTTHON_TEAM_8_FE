@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import Image from 'next/image';
 import { isTodayLetterNoticeViewState, userIdState } from '@/recoil/states';
 import * as S from './styles';
 import LetterDateRange from '../../common/LetterDateRangeText';
@@ -38,7 +39,7 @@ const TodayNewLetterNotice = () => {
         arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
       />
       <div>
-        <LetterSVG />
+        <Image src={LetterSVG} alt="letter" />
       </div>
       <S.Button onClick={() => setIsTodayLetterNoticeView(false)}>
         열어보기
