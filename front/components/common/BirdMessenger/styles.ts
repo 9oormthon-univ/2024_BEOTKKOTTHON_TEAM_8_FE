@@ -71,7 +71,7 @@ export const Message = styled.h1<{ isPast: boolean }>`
   text-align: center;
   white-space: nowrap;
 
-  color: ${(props) => (!props.isPast ? '#000' : 'rgba(0, 0, 0, 1)')};
+  color: ${(props) => (!props.isPast ? '#000' : 'rgba(0, 0, 0, 0.5)')};
 `;
 
 export const SubMessage = styled.h2`

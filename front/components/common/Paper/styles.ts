@@ -26,7 +26,7 @@ export const Input = styled.textarea`
 
   border: none;
   outline: none;
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 1.6rem;
   box-sizing: border-box;
   resize: none;
   overflow: hidden;
