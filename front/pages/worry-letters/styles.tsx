@@ -33,6 +33,14 @@ export const Button = styled.div`
   font-weight: 400;
   text-align: center;
 `;
+export const FullWidth = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 23.5rem;
+`;
 export const BirdContainer = styled.div`
   display: flex;
   margin-left: 7.9rem;
@@ -52,3 +60,4 @@ export const MoveBtn = styled.img`
   z-index: 0;
   /* position: absolute; */
 `;
+export const gif = styled.img``;

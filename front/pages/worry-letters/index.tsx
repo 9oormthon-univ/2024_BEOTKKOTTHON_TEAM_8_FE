@@ -7,10 +7,12 @@ import LetterPaper from '@/components/LetterPaper';
 import BirdAdviceMessage from '@/components/BirdAdviceMessage';
 import SolutionBox from '@/components/SolutionBox';
 import Layout from '@/layout';
+import router from 'next/router';
 
 interface Item {
   createAt: string;
   worryText: string;
+  memoId: number;
 }
 
 const Home = () => {
@@ -18,6 +20,7 @@ const Home = () => {
   const [worryData, setWorryData] = useState<Item[]>([]);
   const [advice, setAdvice] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
+  const [isDelete, setIsDelete] = useState(false);
   const itemsPerPage = 1;
 
   const goToPreviousPage = () => {
@@ -53,7 +56,7 @@ const Home = () => {
       }
     }
     fetchWorryMsg();
-  }, []);
+  }, [isDelete]);
 
   const calcDate = (date: string) => {
     const writeDate = new Date(date);
@@ -76,43 +79,80 @@ const Home = () => {
     }
     fetchAdvice();
   };
+
+  //걱정 보내주기
+  const deleteWorry = async (memoId: number) => {
+    try {
+      const res = await api.patch(`/memos/${memoId}`);
+      console.log(res);
+      if (res.data.code === 200) {
+        setIsDelete(true);
+        setTimeout(() => {
+          setCurrentPage(currentPage + 1);
+          setIsDelete(false);
+        }, 3000);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <Layout isHeader={true}>
       <W.Total>
         {currentPageData.map((item, index) => (
           <div key={index}>
-            <W.WorryDate>{calcDate(item.createAt)}의 걱정</W.WorryDate>
-            <LetterPaper message={item.worryText}></LetterPaper>
-
-            <SolutionBox />
-            <W.BottomBtn>
-              <W.Button
-                onClick={() =>
-                  handleAdvice(item.worryText)
-                }>{`파랑새의 조언`}</W.Button>
-              <W.Button>{`보내주기`}</W.Button>
-            </W.BottomBtn>
+            <W.WorryDate>
+              {calcDate(item.createAt)}의 걱정
+              {isDelete && '을 보내줄게'}
+            </W.WorryDate>
+            {isDelete && <W.gif src={'/MailSolve_ver2.gif'} />}
+            {!isDelete && (
+              <>
+                <LetterPaper message={item.worryText}></LetterPaper>
+                <SolutionBox />
+                <W.BottomBtn>
+                  <W.Button
+                    onClick={() =>
+                      handleAdvice(item.worryText)
+                    }>{`파랑새의 조언`}</W.Button>
+                  <W.Button
+                    onClick={() =>
+                      deleteWorry(item.memoId)
+                    }>{`보내주기`}</W.Button>
+                </W.BottomBtn>
+              </>
+            )}
           </div>
         ))}
       </W.Total>
-      {advice && (
+      {!isDelete && advice && (
         <W.BirdContainer>
           <W.BirdImg src="./birdImg.svg" />
           <BirdAdviceMessage text={advice} leftSize={13.5} />
         </W.BirdContainer>
       )}
-      <W.PageBtn>
-        {currentPage === 0 ? (
-          <W.MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
-        ) : currentPage === worryData.length - 1 ? (
-          <W.MoveBtn src="./leftBtn.svg" onClick={() => goToPreviousPage()} />
-        ) : (
-          <>
-            <W.MoveBtn src="./leftBtn.svg" onClick={() => goToPreviousPage()} />
+      {isDelete && (
+        <W.FullWidth>
+          <W.Button onClick={() => router.push('/home')}>{`돌아가기`}</W.Button>
+        </W.FullWidth>
+      )}
+      {!isDelete && (
+        <W.PageBtn>
+          {currentPage === 0 ? (
             <W.MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
-          </>
-        )}
-      </W.PageBtn>
+          ) : currentPage === worryData.length - 1 ? (
+            <W.MoveBtn src="./leftBtn.svg" onClick={() => goToPreviousPage()} />
+          ) : (
+            <>
+              <W.MoveBtn
+                src="./leftBtn.svg"
+                onClick={() => goToPreviousPage()}
+              />
+              <W.MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
+            </>
+          )}
+        </W.PageBtn>
+      )}
     </Layout>
   );
 };
