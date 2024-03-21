@@ -35,3 +35,8 @@ export const isTodayLetterNoticeViewState = atom<boolean>({
   key: 'isTodayLetterNoticeViewState',
   default: false,
 });
+
+export const isWorryMemoSendState = atom<boolean>({
+  key: 'isWorryMemoSendState',
+  default: false,
+});
