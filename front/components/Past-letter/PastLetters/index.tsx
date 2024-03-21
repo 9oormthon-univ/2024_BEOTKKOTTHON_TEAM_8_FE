@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import { userIdState } from '@/recoil/states';
 import * as S from './styles';
 
-import LeftBtnSVG from '../../public/assets/icons/leftBtn.svg';
-import RightBtnSVG from '../../public/assets/icons/rightBtn.svg';
-import LetterDateRange from '../LetterDateRange';
-import LetterPaper from '../LetterPaper';
+import LeftBtnSVG from '../../../public/assets/icons/leftBtn.svg';
+import RightBtnSVG from '../../../public/assets/icons/rightBtn.svg';
+import LetterDateRangeText from '../../common/LetterDateRangeText';
+import LetterPaper from '../../common/Paper';
 
 interface LetterProps {
   letterId: number;
@@ -28,7 +26,7 @@ const PastLetters = ({ letters }: { letters: LetterProps[] }) => {
     <S.Containter>
       {letter && (
         <S.Box>
-          <LetterDateRange
+          <LetterDateRangeText
             sendDate={letter.sendDate}
             arrivalDate={letter.arrivalDate}
           />

@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isTodayLetterNoticeViewState, userIdState } from '@/recoil/states';
 import * as S from './styles';
-import LetterDateRange from '../LetterDateRange';
+import LetterDateRange from '../../common/LetterDateRangeText';
 import { api } from '@/apis/api';
 
-import LetterSVG from '../../public/assets/icons/mail.svg';
+import LetterSVG from '../../../public/assets/icons/envelope.svg';
 
 const TodayNewLetterNotice = () => {
   const userId = useRecoilValue(userIdState);

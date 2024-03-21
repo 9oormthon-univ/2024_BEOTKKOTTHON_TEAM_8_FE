@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
 
   display: flex;
   justify-content: center;
@@ -71,8 +70,6 @@ export const Message = styled.h1<{ isPast: boolean }>`
   font-size: 1.6rem;
   color: ${(props) =>
     !props.isPast ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 1)'};
-
-  margin-bottom: 0.5rem;
 `;
 
 export const SubMessage = styled.h2`
