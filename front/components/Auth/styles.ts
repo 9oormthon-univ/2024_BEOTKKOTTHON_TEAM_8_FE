@@ -52,12 +52,19 @@ export const Input = styled.input`
   padding-bottom: 0.8rem;
   text-align: center;
 
+  box-shadow: 0 0 0 500px #ededed inset !important;
+
   &::placeholder {
     font-family: 'ChosunNm';
     font-size: 2.4rem;
     color: rgba(0, 0, 0, 0.2);
     text-align: center;
   }
+`;
+
+export const InputValidationText = styled.div`
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.25);
 `;
 
 export const Button = styled.button`
