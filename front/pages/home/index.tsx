@@ -6,6 +6,7 @@ import MainPopup from '@/components/MainPopup';
 import quotesData from '@/public/json/quote.json';
 import { endTimeState, startTimeState, userIdState } from '@/recoil/states';
 import { useRecoilValue } from 'recoil';
+import { useRouter } from 'next/router';
 
 interface Time {
   hours: number;
@@ -19,6 +20,8 @@ interface Quote {
 }
 
 const Home = () => {
+  const router = useRouter();
+
   const [quote, setQuote] = useState<Quote | null>(null);
   const [openRemainTime, setOpenRemainTime] = useState<Time | null>(null);
   const [isOpenTime, setIsOpenTime] = useState<Boolean>(false);
@@ -122,7 +125,8 @@ const Home = () => {
       {message && <MainPopup text={message} topSize={7} />}
       <h.MainImg src="/birdBox.svg" />
       <h.BottomMenues>
-        <h.Menu>{`걱정 넣기`}</h.Menu>
+        <h.Menu
+          onClick={() => router.push('/worry-write')}>{`걱정 넣기`}</h.Menu>
         <h.Menu onClick={() => handleOpenBox()}>
           {`보관함 열기`}
           {!isOpenTime && worryNum && <h.WorryCount>{worryNum}</h.WorryCount>}
