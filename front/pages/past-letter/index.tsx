@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { isTodayLetterNoticeViewState, userIdState } from '@/recoil/states';
 import Layout from '@/layout';
 import { api } from '@/apis/api';
-import TodayNewLetterNotice from '@/components/TodayNewLetterNotice';
-import BirdMessenger from '@/components/BirdMessenger';
-import PastLetters from '@/components/PastLetters';
+import TodayNewLetterNotice from '@/components/Past-letter/TodayNewLetterNotice';
+import BirdMessenger from '@/components/common/BirdMessenger';
+import PastLetters from '@/components/Past-letter/PastLetters';
 
 interface LetterProps {
   letterId: number;

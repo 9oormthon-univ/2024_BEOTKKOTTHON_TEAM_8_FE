@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 
 import * as S from './styles';
 
-const LetterDateRange = ({
+const LetterDateRangeText = ({
   sendDate,
   arrivalDate,
 }: {
@@ -31,4 +31,4 @@ const LetterDateRange = ({
   );
 };
 
-export default LetterDateRange;
+export default LetterDateRangeText;

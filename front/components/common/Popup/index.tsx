@@ -3,11 +3,11 @@ import * as S from './styles';
 
 const Popup = ({
   text,
-  topSize,
+  topSize = -6,
   onClose,
 }: {
   text: string;
-  topSize: number;
+  topSize?: number;
   onClose: () => void;
 }) => {
   const [fadeOut, setFadeOut] = useState(false);

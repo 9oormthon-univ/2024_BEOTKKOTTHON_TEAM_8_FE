@@ -7,7 +7,7 @@ import { ParsedUrlQueryInput } from 'querystring';
 import * as S from './styles';
 import RightBtnSVG from '../../public/assets/icons/RightBtn.svg';
 import RightBtnDisSVG from '../../public/assets/icons/RightBtn_dis.svg';
-import Popup from '../Popup';
+import Popup from '../common/Popup';
 
 import { api } from '@/apis/api';
 

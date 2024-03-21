@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { nameState } from '@/recoil/states';
-import BirdSVG from '../../public/assets/icons/bird.svg';
+import BirdSVG from '../../../public/assets/icons/bird.svg';
 import * as S from './styles';
 
 const BirdMessage = ({ isPast }: { isPast: boolean }) => {
