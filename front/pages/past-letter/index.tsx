@@ -36,31 +36,38 @@ const PastLetter = () => {
     isTodayLetterNoticeViewState,
   ); // 오늘 도착한 편지가 있는지
 
-  useEffect(() => {
-    api
-      .get(`/letters/${userId}`)
-      .then((res) => {
-        if (res.data.code === 200) {
-          setLetters(res.data.result);
+  const [isLoading, setIsLoading] = useState(true);
 
-          if (res.data.result.length > 0) setHasLetter(true);
-          else setHasLetter(false);
+  useEffect(() => {
+    Promise.all([
+      api.get(`/letters/${userId}`),
+      api.get(`/letters/${userId}/existence`),
+    ])
+      .then(([lettersResponse, existenceResponse]) => {
+        if (lettersResponse.data.code === 200) {
+          setLetters(lettersResponse.data.result);
+          setHasLetter(lettersResponse.data.result.length > 0);
+        }
+
+        if (existenceResponse.data.code === 200) {
+          setIsTodayLetterNoticeView(existenceResponse.data.result.isArrived);
         }
       })
       .catch((err) => {
         console.error(err);
-      });
-
-    api
-      .get(`/letters/${userId}/existence`)
-      .then((res) => {
-        if (res.data.code === 200)
-          setIsTodayLetterNoticeView(res.data.result.isArrived);
       })
-      .catch((err) => {
-        console.error(err);
+      .finally(() => {
+        setIsLoading(false);
       });
-  }, []);
+  }, [userId, setIsTodayLetterNoticeView]);
+
+  if (isLoading) {
+    return (
+      <Layout isHeader={true}>
+        <Container>Loading...</Container>
+      </Layout>
+    );
+  }
 
   return (
     <Layout isHeader={true}>
