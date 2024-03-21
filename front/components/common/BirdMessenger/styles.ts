@@ -65,16 +65,21 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Message = styled.h1<{ isPast: boolean }>`
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
   white-space: nowrap;
 
-  font-size: 1.6rem;
-  color: ${(props) =>
-    !props.isPast ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 1)'};
+  color: ${(props) => (!props.isPast ? '#000' : 'rgba(0, 0, 0, 1)')};
 `;
 
 export const SubMessage = styled.h2`
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 12px;
+  text-align: center;
   white-space: nowrap;
 
-  font-size: 1.2rem;
   color: rgba(0, 0, 0, 0.5);
 `;
