@@ -1,58 +1,35 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 31.3rem;
-  padding: 0 2rem;
-
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 50%,
-    transparent 100%
-  );
-
-  &::after {
-    position: absolute;
-    content: '';
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 4.1rem;
-
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 0.8rem;
-    pointer-events: none;
-    z-index: -1;
-  }
-`;
-
 export const List = styled.ul`
-  width: 100%;
+  position: relative;
 
-  padding: 50% 0;
-  margin: 0;
+  width: 100%;
+  height: 150px;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
-
   ::-webkit-scrollbar {
     display: none;
   }
 `;
 
-export const Item = styled.li`
-  font-size: 3.6rem;
-  text-align: center;
+export const ListCenter = styled.div`
+  box-sizing: border-box;
+  height: 50px;
+`;
 
-  margin-right: 10px;
-  list-style-type: none;
+export const ListItem = styled.li<{ isSelected: boolean }>`
   width: 100%;
-  scroll-snap-align: center;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 36px;
+  text-align: center;
+  font-weight: 400;
+  font-size: ${({ isSelected }) => (isSelected ? '3.6rem' : '2rem')};
+  text-align: center;
 `;
