@@ -8,6 +8,7 @@ export default function Document() {
           href="https://webfontworld.github.io/naver/NanumPen.css"
           rel="stylesheet"
         />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <body>
         <Main />
