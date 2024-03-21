@@ -1,20 +1,32 @@
-import LetterDateRange from '@/components/common/LetterDateRangeText';
-import LetterPaper from '@/components/common/Paper';
+import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
 import Layout from '@/layout';
 import { userIdState, userSelectedDateState } from '@/recoil/states';
-import { useRecoilValue } from 'recoil';
 
 import LeftBtnSVG from '../../../public/assets/icons/leftBtn.svg';
 import RightBtnSVG from '../../../public/assets/icons/rightBtn.svg';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+
+import LetterDateRange from '@/components/common/LetterDateRangeText';
+import LetterPaper from '@/components/common/Paper';
 import { api } from '@/apis/api';
+import Popup from '@/components/common/Popup';
 
 const Contatiner = styled.div`
   width: 100%;
   height: 100%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Box = styled.div`
+  width: 100%;
+
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,8 +59,10 @@ const Write = () => {
 
   const arrivalDate = `${userSelectedDate[0]}-${userSelectedDate[1]}-${userSelectedDate[2]}`;
 
+  const [message, setMessage] = useState('');
+
   const handleSend = () => {
-    console.log(arrivalDate, input);
+    if (input.length === 0) return setMessage('내용을 입력해줘');
 
     if (input.length > 0) {
       api
@@ -68,18 +82,21 @@ const Write = () => {
   return (
     <Layout isHeader={true}>
       <Contatiner>
-        <LetterDateRange sendDate={today} arrivalDate={arrivalDate} />
-        <LetterPaper input={input} setInput={setInput} />
-        <BtnWraaper>
-          <div
-            onClick={() => router.push('/future-letter/dateSetup')}
-            style={{ cursor: 'pointer' }}>
-            <LeftBtnSVG />
-          </div>
-          <div onClick={handleSend} style={{ cursor: 'pointer' }}>
-            <RightBtnSVG />
-          </div>
-        </BtnWraaper>
+        <Box>
+          {message && <Popup text={message} onClose={() => setMessage('')} />}
+          <LetterDateRange sendDate={today} arrivalDate={arrivalDate} />
+          <LetterPaper input={input} setInput={setInput} />
+          <BtnWraaper>
+            <div
+              onClick={() => router.push('/future-letter/dateSetup')}
+              style={{ cursor: 'pointer' }}>
+              <LeftBtnSVG />
+            </div>
+            <div onClick={handleSend} style={{ cursor: 'pointer' }}>
+              <RightBtnSVG />
+            </div>
+          </BtnWraaper>
+        </Box>
       </Contatiner>
     </Layout>
   );
