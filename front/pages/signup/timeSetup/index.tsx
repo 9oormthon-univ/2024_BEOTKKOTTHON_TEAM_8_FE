@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import WorryTimeScheduler from '@/components/WorryTimeSetter';
+import WorryTimeSetter from '@/components/WorryTimeSetter';
 import Layout from '@/layout';
 
 const TimeSetup = () => {
@@ -10,7 +10,7 @@ const TimeSetup = () => {
 
   return (
     <Layout isHeader={false}>
-      <WorryTimeScheduler name={name} password={password} />
+      <WorryTimeSetter name={name} password={password} />
     </Layout>
   );
 };

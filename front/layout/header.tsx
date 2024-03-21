@@ -19,10 +19,10 @@ const Header = () => {
         router.push('/home');
         break;
       case '과거의 나로부터':
-        router.push('/page2');
+        router.push('/past-letter');
         break;
       case '미래의 나에게':
-        router.push('/page3');
+        router.push('/future-letter');
         break;
       case '지금의 우리들':
         router.push('/page4');

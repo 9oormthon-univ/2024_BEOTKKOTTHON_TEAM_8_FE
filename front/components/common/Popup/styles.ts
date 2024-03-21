@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Bubble = styled.div<{ topSize: number; isFadeOut: boolean }>`
+export const Bubble = styled.div<{ topSize: number; isFadeOut?: boolean }>`
   position: absolute;
 
   display: flex;
