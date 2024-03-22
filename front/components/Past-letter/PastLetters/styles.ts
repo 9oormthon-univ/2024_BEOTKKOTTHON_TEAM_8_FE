@@ -28,4 +28,6 @@ export const ButtonWrapper = styled.div`
   justify-content: end;
 
   margin-right: 4rem;
+
+  gap: 1.3rem;
 `;
