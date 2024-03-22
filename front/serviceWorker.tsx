@@ -28,7 +28,7 @@ export const sendPushNotification = (title: string, body: string) => {
     navigator.serviceWorker.ready.then((registration) => {
       registration.showNotification(title, {
         body,
-        icon: '/assets/icons/app/16x16.png',
+        icon: '/assets/icons/app/64x64.png',
       });
     });
   }
