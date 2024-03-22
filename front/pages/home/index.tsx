@@ -127,7 +127,7 @@ const Home = () => {
   };
 
   return (
-    <Layout isHeader={true}>
+    <Layout isHeader={true} type="보관함으로">
       <h.FullImg>
         <h.ReportImg src={'/reportBtn.svg'} />
       </h.FullImg>

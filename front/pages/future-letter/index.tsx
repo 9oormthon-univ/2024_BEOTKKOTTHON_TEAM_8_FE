@@ -30,7 +30,7 @@ const FutureLetter = () => {
   const router = useRouter();
 
   return (
-    <Layout isHeader={true}>
+    <Layout isHeader={true} type="미래의 나에게">
       <Contatiner>
         <BirdMessenger isPast={false} />
         <BtnWraaper onClick={() => router.push('/future-letter/dateSetup')}>

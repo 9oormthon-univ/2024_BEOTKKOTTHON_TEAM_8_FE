@@ -5,13 +5,15 @@ import { Innerframe } from './layoutStyle';
 const Layout = ({
   isHeader,
   children,
+  type,
 }: {
   isHeader: boolean;
   children: React.ReactNode;
+  type: string;
 }) => {
   return (
     <Totalframe>
-      {isHeader && <Header />}
+      {isHeader && <Header type={type} />}
       <Innerframe>{children}</Innerframe>
     </Totalframe>
   );
