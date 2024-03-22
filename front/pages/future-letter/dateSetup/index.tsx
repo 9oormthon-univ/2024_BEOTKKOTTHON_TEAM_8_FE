@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
@@ -45,7 +44,7 @@ const DateSetUp = () => {
         Number(userSelectedDate[0]),
         Number(userSelectedDate[1]),
         Number(userSelectedDate[2]),
-      ) < new Date(todayYear, todayMonth, todayDay)
+      ) <= new Date(todayYear, todayMonth, todayDay)
     ) {
       return setMessage('미래의 날짜로 입력해줘');
     }
@@ -58,7 +57,7 @@ const DateSetUp = () => {
       <Contatiner>
         <LetterDateSetter message={message} />
         <BtnWraaper onClick={goToWrite}>
-          <Image src={RightBtnSVG} alt="rightBtn" />
+          <RightBtnSVG />
         </BtnWraaper>
       </Contatiner>
     </Layout>

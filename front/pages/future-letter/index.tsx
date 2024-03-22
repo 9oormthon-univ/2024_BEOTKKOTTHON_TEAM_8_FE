@@ -1,5 +1,4 @@
 import Layout from '@/layout';
-import Image from 'next/image';
 import BirdMessenger from '@/components/common/BirdMessenger';
 
 import RightBtnSVG from '../../public/assets/icons/rightBtn.svg';
@@ -35,7 +34,7 @@ const FutureLetter = () => {
       <Contatiner>
         <BirdMessenger isPast={false} />
         <BtnWraaper onClick={() => router.push('/future-letter/dateSetup')}>
-          <Image src={RightBtnSVG} alt="rightBtn" />
+          <RightBtnSVG />
         </BtnWraaper>
       </Contatiner>
     </Layout>

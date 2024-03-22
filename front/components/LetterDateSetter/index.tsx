@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import DatePicker from '../DatePicker';
 import * as S from './styles';
 
@@ -13,7 +12,7 @@ const LetterDateSetter = ({
     <>
       <S.Container>
         <S.Bubble>{message}</S.Bubble>
-        <Image src={BirdSVG} alt="bird" />
+        <BirdSVG />
       </S.Container>
       <DatePicker />
     </>
