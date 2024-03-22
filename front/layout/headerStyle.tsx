@@ -15,6 +15,7 @@ export const Menu = styled.div`
   justify-content: center;
   align-items: center;
   width: max-content;
+  font-size: 1.2rem;
 `;
 export const Line = styled.div`
   width: 37px;
