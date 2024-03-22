@@ -8,7 +8,7 @@ const WorryWrite = () => {
   const isSend = useRecoilValue(isWorryMemoSendState);
 
   return (
-    <Layout isHeader={true}>
+    <Layout isHeader={true} type={'보관함으로'}>
       {isSend ? <WorryMemoSendNotice /> : <WorryWriter />}
     </Layout>
   );
