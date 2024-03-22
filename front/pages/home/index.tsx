@@ -7,6 +7,7 @@ import quotesData from '@/public/json/quote.json';
 import { endTimeState, startTimeState, userIdState } from '@/recoil/states';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router';
+import Test from '@/Test';
 
 interface Time {
   hours: number;
@@ -153,6 +154,8 @@ const Home = () => {
           <h.Author>{quote.author}</h.Author>
         </h.LifeQuotes>
       )}
+
+      <Test />
     </Layout>
   );
 };
