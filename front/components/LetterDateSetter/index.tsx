@@ -4,11 +4,15 @@ import * as S from './styles';
 
 import BirdSVG from '../../public/assets/icons/bird.svg';
 
-const LetterDateSetter = () => {
+const LetterDateSetter = ({
+  message = '편지가 도착할 날짜를 알려줘',
+}: {
+  message?: string;
+}) => {
   return (
     <>
       <S.Container>
-        <S.Bubble>편지가 도착할 날짜를 알려줘</S.Bubble>
+        <S.Bubble>{message}</S.Bubble>
         <Image src={BirdSVG} alt="bird" />
       </S.Container>
       <DatePicker />

@@ -6,13 +6,15 @@ const Paper = ({
   input,
   setInput,
   message,
+  isHidden,
 }: {
   input?: string;
   setInput?: React.Dispatch<React.SetStateAction<string>>;
   message?: string;
+  isHidden?: boolean;
 }) => {
   return (
-    <S.Container>
+    <S.Container isHidden={isHidden}>
       <Image src={PaperImg} alt="paper" />
       <S.Input
         value={input ? input : message}

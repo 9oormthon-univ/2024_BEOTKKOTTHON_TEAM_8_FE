@@ -35,10 +35,13 @@ const LetterPreview = ({
   return (
     <>
       <S.Containter>
-        <LetterDateRangeText
-          sendDate={sendDate}
-          arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
-        />
+        {!isSent && (
+          <LetterDateRangeText
+            sendDate={sendDate}
+            arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
+          />
+        )}
+
         <div>
           <LetterSVG />
         </div>

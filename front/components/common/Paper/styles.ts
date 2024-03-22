@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ isHidden?: boolean }>`
   position: relative;
   height: 197px;
   background-size: cover;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
+  visibility: ${({ isHidden }) => (isHidden ? 'hidden' : 'visible')};
+  transition:
+    opacity 3s ease-out,
+    visibility 3s ease-out;
 `;
 
 export const Input = styled.textarea`
