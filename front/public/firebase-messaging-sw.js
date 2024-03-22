@@ -15,3 +15,19 @@ const config = {
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
+
+/** 백그라운드 상태일 때 FCM에서 보낸 푸시 알림 메시지를 수신할 때 호출하는 로직 */
+messaging.onBackgroundMessage(function (payload) {
+  console.log(
+    '[firebase-messaging-sw.js] Received background message ',
+    payload,
+  );
+
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: '/assets/icons/app/64x64.png',
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});

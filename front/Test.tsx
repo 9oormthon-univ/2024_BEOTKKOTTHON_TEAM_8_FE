@@ -61,10 +61,10 @@ const Test = () => {
     onMessageFCM();
   }, []);
 
-  // 푸시 알림 테스트
-  const clickPushHandler = () => {
-    sendPushNotification('알림 보내기', '알림 가나요?');
-  };
+  // // 푸시 알림 테스트
+  // const clickPushHandler = () => {
+  //   sendPushNotification('알림 보내기', '알림 가나요?');
+  // };
 
   useEffect(() => {
     registerServiceWorker();
@@ -73,11 +73,7 @@ const Test = () => {
     sendPushNotification('테스트 알림', '테스트 알림입니다.');
   }, []);
 
-  return (
-    <button onClick={clickPushHandler} style={{ color: 'red' }}>
-      알림 보내기
-    </button>
-  );
+  return <></>;
 };
 
 export default Test;
