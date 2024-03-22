@@ -101,7 +101,7 @@ const Write = () => {
   };
 
   return (
-    <Layout isHeader={true}>
+    <Layout isHeader={true} type="미래의 나에게">
       <Contatiner>
         <Box>
           {message && <Popup text={message} onClose={() => setMessage('')} />}

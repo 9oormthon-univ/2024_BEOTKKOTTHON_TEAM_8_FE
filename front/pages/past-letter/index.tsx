@@ -63,14 +63,14 @@ const PastLetter = () => {
 
   if (isLoading) {
     return (
-      <Layout isHeader={true}>
+      <Layout isHeader={true} type={'과거의 나로부터'}>
         <Container>Loading...</Container>
       </Layout>
     );
   }
 
   return (
-    <Layout isHeader={true}>
+    <Layout isHeader={true} type={'과거의 내가'}>
       <Container>
         {isTodayLetterNoticeView ? (
           <TodayNewLetterNotice />

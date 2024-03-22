@@ -53,7 +53,7 @@ const DateSetUp = () => {
   };
 
   return (
-    <Layout isHeader={true}>
+    <Layout isHeader={true} type="미래의 나에게">
       <Contatiner>
         <LetterDateSetter message={message} />
         <BtnWraaper onClick={goToWrite}>
