@@ -1,17 +1,13 @@
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+
 import Layout from '@/layout';
 import { userIdState, userSelectedDateState } from '@/recoil/states';
-
-import LeftBtnSVG from '../../../public/assets/icons/leftBtn.svg';
-import RightBtnSVG from '../../../public/assets/icons/rightBtn.svg';
-
+import { api } from '@/apis/api';
 import LetterDateRange from '@/components/common/LetterDateRangeText';
 import LetterPaper from '@/components/common/Paper';
-import { api } from '@/apis/api';
 import Popup from '@/components/common/Popup';
 import LetterPreview from '@/components/LetterPreview';
 
@@ -130,10 +126,10 @@ const Write = () => {
               <div
                 onClick={() => router.push('/future-letter/dateSetup')}
                 style={{ cursor: 'pointer' }}>
-                <LeftBtnSVG />
+                <img src="/assets/icons/leftBtn.svg" />
               </div>
               <div onClick={handleSend} style={{ cursor: 'pointer' }}>
-                <RightBtnSVG />
+                <img src="/assets/icons/rightBtn.svg" />
               </div>
             </BtnWraaper>
           )}

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+
 import { userSelectedDateState } from '@/recoil/states';
 import LetterDateSetter from '@/components/LetterDateSetter';
 import Layout from '@/layout';
-import RightBtnSVG from '../../../public/assets/icons/rightBtn.svg';
 
 const Contatiner = styled.div`
   width: 100%;
@@ -57,7 +57,7 @@ const DateSetUp = () => {
       <Contatiner>
         <LetterDateSetter message={message} />
         <BtnWraaper onClick={goToWrite}>
-          <RightBtnSVG />
+          <img src="/assets/icons/rightBtn.svg" />
         </BtnWraaper>
       </Contatiner>
     </Layout>

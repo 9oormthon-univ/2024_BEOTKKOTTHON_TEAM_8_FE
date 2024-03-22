@@ -12,8 +12,6 @@ import {
 import { ParsedUrlQueryInput } from 'querystring';
 
 import * as S from './styles';
-import RightBtnSVG from '../../public/assets/icons/RightBtn.svg';
-import RightBtnDisSVG from '../../public/assets/icons/RightBtn_dis.svg';
 import Popup from '../common/Popup';
 
 import { api } from '@/apis/api';
@@ -193,9 +191,9 @@ const Auth = (props: Props) => {
             !isValid ||
             nickname.length === 0 ||
             pwd.length === 0 ? (
-              <Image src={RightBtnDisSVG} alt="btn" />
+              <img src="/assets/icons/rightBtn_dis.svg" alt="disBtn" />
             ) : (
-              <Image src={RightBtnSVG} alt="btn" />
+              <img src="/assets/icons/rightBtn.svg" alt="btn" />
             )}
           </S.BtnWrapper>
         ) : (
