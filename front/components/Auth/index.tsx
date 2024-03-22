@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { nameState, passwordState, userIdState } from '@/recoil/states';
+import {
+  nameState,
+  passwordState,
+  userIdState,
+  endTimeState,
+  startTimeState,
+} from '@/recoil/states';
 import { ParsedUrlQueryInput } from 'querystring';
 
 import * as S from './styles';
@@ -22,6 +29,8 @@ const Auth = (props: Props) => {
 
   const [nickname, setNickname] = useRecoilState(nameState);
   const [pwd, setPwd] = useRecoilState(passwordState);
+  const [endTime, setEndTime] = useRecoilState(endTimeState);
+  const [startTime, setStartTime] = useRecoilState(startTimeState);
   const [message, setMessage] = useState<string>('');
   const setUserId = useSetRecoilState(userIdState);
   const [isNameDuplicateCheck, setIsNameDuplicateCheck] =
@@ -104,24 +113,26 @@ const Auth = (props: Props) => {
 
   /** 내 보관함으로 - 확인 버튼 */
   const handleLogin = () => {
-    if (nickname.length === 0 || pwd.length === 0)
-      return setMessage('내용을 입력해줘');
+    if (nickname.length > 1 && nickname.length < 6 && pwd.length === 4) {
+      api
+        .post('/users/login', { name: nickname, password: pwd })
+        .then((res) => {
+          console.log(res);
+          if (res.data.code == 200) {
+            router.push('/home');
+            setEndTime(res.data.result.endTime);
+            setStartTime(res.data.result.startTime);
+          }
+          if (res.data.code >= 4000) {
+            setMessage('별명과 비밀번호를 다시 확인해줘');
+          }
 
-    if (!isValid) return setMessage('별명과 비밀번호를 다시 확인해줘');
-
-    api
-      .post('/users/login', { name: nickname, password: pwd })
-      .then((res) => {
-        if (res.data.code === 200) router.push('/home');
-
-        if (res.data.code >= 4000)
-          setMessage('별명과 비밀번호를 다시 확인해줘');
-
-        setUserId(res.data.result.userId);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+          setUserId(res.data.result.userId);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else setMessage('내용을 입력해줘');
   };
 
   return (
@@ -182,9 +193,9 @@ const Auth = (props: Props) => {
             !isValid ||
             nickname.length === 0 ||
             pwd.length === 0 ? (
-              <RightBtnDisSVG />
+              <Image src={RightBtnDisSVG} alt="btn" />
             ) : (
-              <RightBtnSVG />
+              <Image src={RightBtnSVG} alt="btn" />
             )}
           </S.BtnWrapper>
         ) : (

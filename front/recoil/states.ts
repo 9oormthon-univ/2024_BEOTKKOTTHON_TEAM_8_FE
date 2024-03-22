@@ -17,6 +17,11 @@ export const userIdState = atom<number>({
 
 export const currentWorryTimeState = atom<string[]>({
   key: 'currentWorryTimeState',
+  default: ['1', '00', 'AM'],
+});
+
+export const userSelectedDateState = atom<string[]>({
+  key: 'userSelectedDateState',
   default: [],
 });
 
@@ -34,6 +39,18 @@ export const passwordState = atom<string>({
 export const isTodayLetterNoticeViewState = atom<boolean>({
   key: 'isTodayLetterNoticeViewState',
   default: false,
+});
+
+export const endTimeState = atom<string>({
+  key: 'endTimeState',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const startTimeState = atom<string>({
+  key: 'startTimeState',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const isWorryMemoSendState = atom<boolean>({

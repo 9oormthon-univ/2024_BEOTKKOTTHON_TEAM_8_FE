@@ -3,7 +3,7 @@ import { nameState } from '@/recoil/states';
 import BirdSVG from '../../../public/assets/icons/bird.svg';
 import * as S from './styles';
 
-const BirdMessage = ({ isPast }: { isPast: boolean }) => {
+const BirdMessenger = ({ isPast }: { isPast: boolean }) => {
   const name = useRecoilValue(nameState);
 
   return (
@@ -28,4 +28,5 @@ const BirdMessage = ({ isPast }: { isPast: boolean }) => {
     </S.Container>
   );
 };
-export default BirdMessage;
+
+export default BirdMessenger;

@@ -41,7 +41,7 @@ export const Third = styled.div`
   width: 100%;
 `;
 export const FirstTxt = styled.div`
-  color: #000;
+  color: rgba(0, 0, 0, 0.5);
   opacity: 70%;
   font-size: 4rem;
   opacity: 0;
@@ -50,7 +50,7 @@ export const FirstTxt = styled.div`
     ${fadeOut} 1s ease-out 3s forwards;
 `;
 export const FirstSubTxt = styled.div`
-  color: #7a7a7a;
+  color: rgba(0, 0, 0, 0.25);
   font-size: 2rem;
   white-space: pre-wrap;
   margin-top: 1rem;

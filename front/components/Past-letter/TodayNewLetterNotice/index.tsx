@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isTodayLetterNoticeViewState, userIdState } from '@/recoil/states';
-import * as S from './styles';
-import LetterDateRange from '../../common/LetterDateRangeText';
 import { api } from '@/apis/api';
 
-import LetterSVG from '../../../public/assets/icons/envelope.svg';
+import LetterPreview from '@/components/LetterPreview';
 
 const TodayNewLetterNotice = () => {
   const userId = useRecoilValue(userIdState);
@@ -13,6 +11,8 @@ const TodayNewLetterNotice = () => {
   const todayYear = new Date().getFullYear();
   const todayMonth = new Date().getMonth() + 1;
   const todayDay = new Date().getDate();
+
+  const arrivalDate = `${todayYear}-${todayMonth}-${todayDay}`;
 
   const [sendDate, setSendDate] = useState<string>('');
 
@@ -32,18 +32,12 @@ const TodayNewLetterNotice = () => {
   }, []);
 
   return (
-    <S.Containter>
-      <LetterDateRange
-        sendDate={sendDate}
-        arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
-      />
-      <div>
-        <LetterSVG />
-      </div>
-      <S.Button onClick={() => setIsTodayLetterNoticeView(false)}>
-        열어보기
-      </S.Button>
-    </S.Containter>
+    <LetterPreview
+      isSent={false}
+      sendDate={sendDate}
+      arrivalDate={arrivalDate}
+      setState={setIsTodayLetterNoticeView}
+    />
   );
 };
 

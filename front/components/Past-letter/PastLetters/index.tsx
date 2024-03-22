@@ -32,9 +32,15 @@ const PastLetters = ({ letters }: { letters: LetterProps[] }) => {
           />
           <LetterPaper message={letter.letter}></LetterPaper>
           <S.ButtonWrapper>
-            {index >= 1 && <LeftBtnSVG onClick={() => setIndex(index - 1)} />}
+            {index >= 1 && (
+              <S.LeftBtnWrapper>
+                <LeftBtnSVG onClick={() => setIndex(index - 1)} />
+              </S.LeftBtnWrapper>
+            )}
             {index < letters.length - 1 && (
-              <RightBtnSVG onClick={() => setIndex(index + 1)} />
+              <S.RightBtnWrapper>
+                <RightBtnSVG onClick={() => setIndex(index + 1)} />
+              </S.RightBtnWrapper>
             )}
           </S.ButtonWrapper>
         </S.Box>
