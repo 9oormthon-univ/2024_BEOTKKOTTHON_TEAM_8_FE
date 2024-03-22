@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import DatePicker from '../DatePicker';
 import * as S from './styles';
 
@@ -8,7 +9,7 @@ const LetterDateSetter = () => {
     <>
       <S.Container>
         <S.Bubble>편지가 도착할 날짜를 알려줘</S.Bubble>
-        <BirdSVG />
+        <Image src={BirdSVG} alt="bird" />
       </S.Container>
       <DatePicker />
     </>
