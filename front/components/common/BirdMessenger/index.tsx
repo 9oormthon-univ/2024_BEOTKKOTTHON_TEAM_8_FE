@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
 import { nameState } from '@/recoil/states';
 import BirdSVG from '../../../public/assets/icons/bird.svg';
@@ -10,7 +9,7 @@ const BirdMessenger = ({ isPast }: { isPast: boolean }) => {
   return (
     <S.Container>
       <S.ImageWrapper>
-        <Image src={BirdSVG} alt="bird" />
+        <BirdSVG />
       </S.ImageWrapper>
       <S.Bubble>
         <S.Message isPast={isPast}>

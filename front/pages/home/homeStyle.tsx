@@ -48,6 +48,7 @@ export const BottomMenues = styled.div`
   }
 `;
 export const Menu = styled.div`
+  cursor: pointer;
   position: relative;
   width: 10.9rem;
   height: 37px;

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import * as S from './styles';
 
 import LeftBtnSVG from '../../../public/assets/icons/leftBtn.svg';
@@ -34,18 +33,14 @@ const PastLetters = ({ letters }: { letters: LetterProps[] }) => {
           <LetterPaper message={letter.letter}></LetterPaper>
           <S.ButtonWrapper>
             {index >= 1 && (
-              <Image
-                src={LeftBtnSVG}
-                onClick={() => setIndex(index - 1)}
-                alt="leftBtn"
-              />
+              <S.LeftBtnWrapper>
+                <LeftBtnSVG onClick={() => setIndex(index - 1)} />
+              </S.LeftBtnWrapper>
             )}
             {index < letters.length - 1 && (
-              <Image
-                src={RightBtnSVG}
-                alt="rightBtn"
-                onClick={() => setIndex(index + 1)}
-              />
+              <S.RightBtnWrapper>
+                <RightBtnSVG onClick={() => setIndex(index + 1)} />
+              </S.RightBtnWrapper>
             )}
           </S.ButtonWrapper>
         </S.Box>

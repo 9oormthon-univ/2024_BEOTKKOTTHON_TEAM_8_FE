@@ -23,9 +23,18 @@ export const Title = styled.h1`
 export const ButtonWrapper = styled.div`
   width: 100%;
 
+  position: relative;
   cursor: pointer;
   display: flex;
   justify-content: end;
+`;
 
-  margin-right: 4rem;
+export const LeftBtnWrapper = styled.div`
+  position: absolute;
+  right: 26%;
+`;
+
+export const RightBtnWrapper = styled.div`
+  position: absolute;
+  right: 8%;
 `;
