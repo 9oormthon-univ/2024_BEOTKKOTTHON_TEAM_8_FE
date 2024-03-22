@@ -6,6 +6,7 @@ export const Container = styled.div`
   background-size: cover;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 2rem;
 `;
 
 export const SolutionAreaImg = styled.img`

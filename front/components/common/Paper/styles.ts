@@ -14,13 +14,14 @@ export const Container = styled.div<{ isHidden?: boolean }>`
     visibility 3s ease-out;
 `;
 
-export const Input = styled.textarea`
+export const Input = styled.textarea<{ isBlur: Boolean }>`
   font-family: 'NanumPen';
   font-size: 2.4rem;
   color: rgba(0, 0, 0, 0.5);
   background: transparent;
   text-overflow: ellipsis;
   line-height: 1.4;
+  filter: ${(props) => props.isBlur && 'blur(5px)'};
 
   position: absolute;
   top: 0;

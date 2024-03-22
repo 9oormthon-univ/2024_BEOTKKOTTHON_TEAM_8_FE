@@ -10,6 +10,7 @@ export const Bubble = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: pre-wrap;
 
   width: 14.1rem;
   height: max-content;

@@ -61,3 +61,6 @@ export const MoveBtn = styled.img`
   /* position: absolute; */
 `;
 export const gif = styled.img``;
+export const PassTime = styled.div`
+  display: flex;
+`;
