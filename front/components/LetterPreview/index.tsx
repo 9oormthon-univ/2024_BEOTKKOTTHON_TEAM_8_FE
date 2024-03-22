@@ -34,19 +34,21 @@ const LetterPreview = ({
 
   return (
     <>
-      <S.Containter>
-        {!isSent && (
-          <LetterDateRangeText
-            sendDate={sendDate}
-            arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
-          />
-        )}
+      {sendDate && (
+        <S.Containter>
+          {!isSent && (
+            <LetterDateRangeText
+              sendDate={sendDate}
+              arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
+            />
+          )}
 
-        <div>
-          <LetterSVG />
-        </div>
-        <S.Button onClick={handleAction}>{btnText}</S.Button>
-      </S.Containter>
+          <div>
+            <LetterSVG />
+          </div>
+          <S.Button onClick={handleAction}>{btnText}</S.Button>
+        </S.Containter>
+      )}
     </>
   );
 };
