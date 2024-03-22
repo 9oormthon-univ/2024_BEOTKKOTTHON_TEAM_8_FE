@@ -16,6 +16,11 @@ const WorryWriter = () => {
 
   const setIsSend = useSetRecoilState(isWorryMemoSendState);
 
+  const goToHome = () => {
+    setIsSend(false);
+    router.push('/home');
+  };
+
   const handleSend = () => {
     if (input.length === 0) return setMessage('내용을 입력해줘');
 
@@ -24,9 +29,7 @@ const WorryWriter = () => {
       .then((res) => {
         console.log(res);
 
-        if (res.data.code === 200) {
-          setIsSend(true);
-        } else setIsSend(false);
+        if (res.data.code === 200) setIsSend(true);
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +45,7 @@ const WorryWriter = () => {
         <S.Text>지금 무슨 걱정해?</S.Text>
         <LetterPaper input={input} setInput={setInput} />
         <S.ButtonContainer>
-          <S.Button onClick={() => router.push('/home')}>돌아가기</S.Button>
+          <S.Button onClick={goToHome}>돌아가기</S.Button>
           <S.Button onClick={handleSend}>보관하기</S.Button>
         </S.ButtonContainer>
       </S.Box>
