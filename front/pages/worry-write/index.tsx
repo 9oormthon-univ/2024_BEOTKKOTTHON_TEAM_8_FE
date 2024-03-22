@@ -1,11 +1,16 @@
-import { useRecoilValue } from 'recoil';
+import React, { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { isWorryMemoSendState } from '@/recoil/states';
 import WorryMemoSendNotice from '@/components/WorryMemoSendNotice';
 import WorryWriter from '@/components/WorryWriter';
 import Layout from '@/layout';
 
 const WorryWrite = () => {
-  const isSend = useRecoilValue(isWorryMemoSendState);
+  const [isSend, setIsSend] = useRecoilState(isWorryMemoSendState);
+
+  useEffect(() => {
+    setIsSend(false);
+  }, []);
 
   return (
     <Layout isHeader={true}>
