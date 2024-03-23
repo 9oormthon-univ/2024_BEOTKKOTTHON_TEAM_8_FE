@@ -293,7 +293,7 @@ const Home = () => {
           <Menu onClick={() => router.push('/worry-write')}>{`걱정 넣기`}</Menu>
           <Menu onClick={() => handleOpenBox()}>
             {`보관함 열기`}
-            {!isOpenTime && <WorryCount>{worryNum}</WorryCount>}
+            {!isOpenTime && worryNum && <WorryCount>{worryNum}</WorryCount>}
           </Menu>
         </BottomMenues>
         {quote && (
