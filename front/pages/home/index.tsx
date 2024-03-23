@@ -7,7 +7,7 @@ import MainPopup from '@/components/MainPopup';
 import quotesData from '@/public/json/quote.json';
 import { endTimeState, startTimeState, userIdState } from '@/recoil/states';
 import { useRecoilValue } from 'recoil';
-// import Test from '@/Test';
+import Test from '@/Test';
 
 import styled from 'styled-components';
 const breakpoints = [480, 768, 992, 1280];
@@ -302,7 +302,7 @@ const Home = () => {
         )}
       </TotalBottom>
 
-      {/* <Test /> */}
+      <Test />
     </Layout>
   );
 };
