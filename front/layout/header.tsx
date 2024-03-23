@@ -48,7 +48,7 @@ const Header = ({ type }: { type: string }) => {
         <Menu key={index} onClick={() => handleMenuClick(index, name)}>
           <Line />
           <HeaderName>{name}</HeaderName>
-          {selectIcon == name && <Circle src="./pointCircle.svg" />}
+          {selectIcon == name && <Circle src="/pointCircle.svg" />}
         </Menu>
       ))}
     </TotalHeader>

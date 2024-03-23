@@ -15,3 +15,12 @@ const config = {
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
+message.onBackgroundMessage((payload) => {
+  console.log('[firebase-messaging-sw.js] 배경 메시지 수신 ', payload);
+  constnotificationTitle = payload.notification.title;
+  constnotificationOptions = {
+    body: payload.notification.body,
+    icon: './logo.png',
+  };
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
