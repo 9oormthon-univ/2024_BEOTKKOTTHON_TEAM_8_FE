@@ -21,7 +21,7 @@ const Layout = ({
   type,
 }: {
   isHeader: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   type?: string;
 }) => {
   return (
