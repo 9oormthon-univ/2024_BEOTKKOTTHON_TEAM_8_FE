@@ -1,19 +1,26 @@
 import { useRecoilValue } from 'recoil';
 import { nameState } from '@/recoil/states';
-import BirdSVG from '../../../public/assets/icons/bird.svg';
 import * as S from './styles';
 
-const BirdMessenger = ({ isPast }: { isPast: boolean }) => {
+const BirdMessenger = ({
+  isPast,
+  message,
+}: {
+  isPast?: boolean;
+  message?: string;
+}) => {
   const name = useRecoilValue(nameState);
 
   return (
     <S.Container>
       <S.ImageWrapper>
-        <BirdSVG />
+        <img src="/assets/icons/bird.svg" />
       </S.ImageWrapper>
       <S.Bubble>
         <S.Message isPast={isPast}>
-          {isPast ? (
+          {message ? (
+            message
+          ) : isPast ? (
             '도착한 편지가 없어'
           ) : (
             <>
