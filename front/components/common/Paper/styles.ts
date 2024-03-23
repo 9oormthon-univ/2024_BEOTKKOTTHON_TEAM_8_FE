@@ -14,7 +14,7 @@ export const Container = styled.div<{ isHidden?: boolean }>`
     visibility 3s ease-out;
 `;
 
-export const Input = styled.textarea<{ isBlur: Boolean }>`
+export const Input = styled.textarea<{ isBlur?: Boolean }>`
   font-family: 'NanumPen';
   font-size: 2.4rem;
   color: rgba(0, 0, 0, 0.5);
