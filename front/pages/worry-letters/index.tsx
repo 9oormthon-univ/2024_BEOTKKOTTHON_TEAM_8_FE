@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import * as W from './styles';
+// import * as W from './styles';
 import { api } from '@/apis/api';
 import { userIdState } from '@/recoil/states';
 import { useRecoilValue } from 'recoil';
@@ -9,6 +9,82 @@ import SolutionBox from '@/components/SolutionBox';
 import Popup from '@/components/common/Popup';
 import Layout from '@/layout';
 import router from 'next/router';
+
+import styled from 'styled-components';
+
+export const Total = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+export const WorryDate = styled.div`
+  margin-top: 15.5vh;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+  @media (max-height: 715px) {
+    margin-top: 5.5vh;
+  }
+`;
+export const BottomBtn = styled.div`
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+`;
+export const Button = styled.div<{ isWrite: boolean }>`
+  width: 109px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${(props) =>
+    props.isWrite ? 'rgba(0, 0, 0, 0.1)' : 'rgba(0,0,0,0.05)'};
+  color: ${(props) =>
+    props.isWrite ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0,0,0,0.25)'};
+  pointer-events: ${(props) => !props.isWrite && 'none'};
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+`;
+export const FullWidth = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 23.5rem;
+`;
+export const BirdContainer = styled.div`
+  display: flex;
+  margin-left: 7.9rem;
+`;
+export const BirdImg = styled.img`
+  margin-top: 3.3rem;
+  justify-content: flex-start;
+  @media (max-height: 715px) {
+    margin-top: 0.3rem;
+  }
+`;
+export const PageBtn = styled.div`
+  display: flex;
+  gap: 11.96px;
+  align-items: flex-end;
+  float: right;
+  margin-right: 8.1rem;
+`;
+export const MoveBtn = styled.img`
+  z-index: 0;
+  /* position: absolute; */
+`;
+export const gif = styled.img``;
+export const PassTime = styled.div`
+  display: flex;
+`;
 
 interface Item {
   worryText: string;
@@ -174,7 +250,7 @@ const Home = () => {
   return (
     currentPageData && (
       <Layout isHeader={true} type="보관함으로">
-        <W.Total>
+        <Total>
           <>
             {isPopup && (
               <Popup
@@ -190,11 +266,11 @@ const Home = () => {
                 onClose={() => setMessage('')}
               />
             )}
-            <W.WorryDate>
+            <WorryDate>
               {makeCurrent}의 걱정
               {isDelete && '을 보내줄게'}
-            </W.WorryDate>
-            {isDelete && <W.gif src={'/MailSolve_ver2.gif'} />}
+            </WorryDate>
+            {isDelete && <img src={'/MailSolve_ver2.gif'} />}
             {!isDelete && (
               <>
                 <LetterPaper
@@ -206,48 +282,48 @@ const Home = () => {
                   input={writeSolution}
                 />
                 {isBlur && (
-                  <W.PassTime>
-                    <W.BirdImg src="./birdImg.svg" />
+                  <PassTime>
+                    <BirdImg src="./birdImg.svg" />
                     <BirdAdviceMessage
                       text={'시간이 흘러 \n흐려진 걱정이 있어 \n여전히 걱정돼?'}
                       leftSize={14}
                     />
-                  </W.PassTime>
+                  </PassTime>
                 )}
                 {isBlur ? (
-                  <W.BottomBtn>
-                    <W.Button
+                  <BottomBtn>
+                    <Button
                       isWrite={true}
                       onClick={() =>
                         handleStillWorry(currentPageData?.memoId)
-                      }>{`아직 걱정돼`}</W.Button>
-                    <W.Button
+                      }>{`아직 걱정돼`}</Button>
+                    <Button
                       isWrite={true}
                       onClick={() =>
                         deleteWorry(currentPageData?.memoId)
-                      }>{`이제 괜찮아`}</W.Button>
-                  </W.BottomBtn>
+                      }>{`이제 괜찮아`}</Button>
+                  </BottomBtn>
                 ) : (
-                  <W.BottomBtn>
-                    <W.Button
+                  <BottomBtn>
+                    <Button
                       isWrite={isSolution}
                       onClick={() =>
                         handleSaveSolution(currentPageData?.memoId)
-                      }>{`저장하기`}</W.Button>
-                    <W.Button
+                      }>{`저장하기`}</Button>
+                    <Button
                       isWrite={true}
                       onClick={() =>
                         deleteWorry(currentPageData.memoId)
-                      }>{`보내주기`}</W.Button>
-                  </W.BottomBtn>
+                      }>{`보내주기`}</Button>
+                  </BottomBtn>
                 )}
               </>
             )}
           </>
-        </W.Total>
-        <W.BirdContainer>
+        </Total>
+        <BirdContainer>
           {!isBlur && (
-            <W.BirdImg
+            <BirdImg
               src="./speakBird.svg"
               onClick={() => handleAdvice(currentPageData.worryText)}
             />
@@ -256,36 +332,30 @@ const Home = () => {
           {!isDelete && advice && (
             <BirdAdviceMessage text={advice} leftSize={15} />
           )}
-        </W.BirdContainer>
+        </BirdContainer>
         {isDelete && (
-          <W.FullWidth>
-            <W.Button
+          <FullWidth>
+            <Button
               isWrite={true}
-              onClick={() => router.push('/home')}>{`돌아가기`}</W.Button>
-          </W.FullWidth>
+              onClick={() => router.push('/home')}>{`돌아가기`}</Button>
+          </FullWidth>
         )}
         {!isDelete && !isBlur && (
-          <W.PageBtn>
+          <PageBtn>
             {currentPageIndex === 0 ? (
-              <W.MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
+              <MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
             ) : currentPageIndex === worryData.length - 1 ? (
-              <W.MoveBtn
-                src="./leftBtn.svg"
-                onClick={() => goToPreviousPage()}
-              />
+              <MoveBtn src="./leftBtn.svg" onClick={() => goToPreviousPage()} />
             ) : (
               <>
-                <W.MoveBtn
+                <MoveBtn
                   src="./leftBtn.svg"
                   onClick={() => goToPreviousPage()}
                 />
-                <W.MoveBtn
-                  src="./rightBtn.svg"
-                  onClick={() => goToNextPage()}
-                />
+                <MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
               </>
             )}
-          </W.PageBtn>
+          </PageBtn>
         )}
       </Layout>
     )

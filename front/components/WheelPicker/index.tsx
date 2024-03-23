@@ -56,7 +56,11 @@ const WheelPicker = ({
         <S.ListItem
           key={index}
           isSelected={Number(index) === Number(selected)}
-          ref={(el) => (itemRefs.current[index] = el)}>
+          ref={(el) => {
+            if (el) {
+              itemRefs.current[index] = el;
+            }
+          }}>
           {item}
         </S.ListItem>
       ))}

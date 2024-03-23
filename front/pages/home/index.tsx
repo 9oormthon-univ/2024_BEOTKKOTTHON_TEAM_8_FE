@@ -1,13 +1,140 @@
 import { useState, useEffect } from 'react';
 import Layout from '@/layout';
 import { api } from '@/apis/api';
-import * as h from './homeStyle';
+// import * as h from './homeStyle';
 import { useRouter } from 'next/router';
 import MainPopup from '@/components/MainPopup';
 import quotesData from '@/public/json/quote.json';
 import { endTimeState, startTimeState, userIdState } from '@/recoil/states';
 import { useRecoilValue } from 'recoil';
-import Test from '@/Test';
+// import Test from '@/Test';
+
+import styled from 'styled-components';
+const breakpoints = [480, 768, 992, 1280];
+const media = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
+
+export const FullImg = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
+export const ReportImg = styled.img`
+  margin-right: 1.2rem;
+  margin-bottom: 1.5rem;
+  @media (max-height: 736px) {
+    margin-bottom: 0;
+  }
+`;
+export const SubTitle = styled.div`
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.5);
+  /* margin-top: 6rem; */
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+export const Time = styled.div`
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+`;
+export const ImgTotal = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const MainImg = styled.img`
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  @media (max-height: 736px) {
+    position: fixed;
+    bottom: -11rem;
+  }
+  ${media[1]} {
+    width: 391px;
+    position: fixed;
+    bottom: -8rem;
+  }
+`;
+export const TotalBottom = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  bottom: 10rem;
+  @media (max-height: 736px) {
+    bottom: 6.17vh;
+  }
+  ${media[1]} {
+    bottom: 7.17vh;
+  }
+`;
+
+export const BottomMenues = styled.div`
+  gap: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5.6rem;
+  ${media[1]} {
+    margin-bottom: 3.6rem;
+  }
+  @media (max-height: 736px) {
+    margin-bottom: 1.6rem;
+  }
+`;
+export const Menu = styled.div`
+  cursor: pointer;
+  position: relative;
+  width: 10.9rem;
+  height: 3.7rem;
+  font-size: 1.6rem;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const WorryCount = styled.div`
+  position: absolute;
+  padding: 0.4rem;
+  border-radius: 50%;
+  background: #869daa;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+  right: -0.8rem;
+  top: -1.4rem;
+`;
+export const LifeQuotes = styled.div`
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+  width: 100%;
+  @media (max-height: 736px) {
+    bottom: 3rem;
+  }
+`;
+export const Author = styled.div`
+  margin-top: 10px;
+`;
+export const BubbleContainer = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  top: 6rem;
+  @media (max-height: 736px) {
+    top: 2rem;
+  }
+`;
 
 interface Time {
   hours: number;
@@ -134,49 +261,48 @@ const Home = () => {
 
   return (
     <Layout isHeader={true} type="보관함으로">
-      <h.FullImg>
-        <h.ReportImg
+      <FullImg>
+        <ReportImg
           src={'/reportBtn.svg'}
           onClick={() => router.push('/report')}
         />
-      </h.FullImg>
+      </FullImg>
       {isOpenTime ? (
-        <h.SubTitle>{`보관함이 닫히기까지`}</h.SubTitle>
+        <SubTitle>{`보관함이 닫히기까지`}</SubTitle>
       ) : (
-        <h.SubTitle>{`보관함이 열리기까지`}</h.SubTitle>
+        <SubTitle>{`보관함이 열리기까지`}</SubTitle>
       )}
-      <h.Time>{`${openRemainTime?.hours}시간 ${openRemainTime?.minutes}분 ${openRemainTime?.seconds}초`}</h.Time>
+      <Time>{`${openRemainTime?.hours}시간 ${openRemainTime?.minutes}분 ${openRemainTime?.seconds}초`}</Time>
       {message && !closePopup && (
-        <h.BubbleContainer>
+        <BubbleContainer>
           <MainPopup text={message} />
           <img
             src={'/xBtn.svg'}
             style={{ cursor: 'pointer' }}
             onClick={() => setClosePopup(true)}
           />
-        </h.BubbleContainer>
+        </BubbleContainer>
       )}
-      <h.ImgTotal>
-        <h.MainImg src="/birdBox.svg" />
-      </h.ImgTotal>
-      <h.TotalBottom>
-        <h.BottomMenues>
-          <h.Menu
-            onClick={() => router.push('/worry-write')}>{`걱정 넣기`}</h.Menu>
-          <h.Menu onClick={() => handleOpenBox()}>
+      <ImgTotal>
+        <MainImg src="/birdBox.svg" />
+      </ImgTotal>
+      <TotalBottom>
+        <BottomMenues>
+          <Menu onClick={() => router.push('/worry-write')}>{`걱정 넣기`}</Menu>
+          <Menu onClick={() => handleOpenBox()}>
             {`보관함 열기`}
-            {!isOpenTime && worryNum && <h.WorryCount>{worryNum}</h.WorryCount>}
-          </h.Menu>
-        </h.BottomMenues>
+            {!isOpenTime && worryNum && <WorryCount>{worryNum}</WorryCount>}
+          </Menu>
+        </BottomMenues>
         {quote && (
-          <h.LifeQuotes>
+          <LifeQuotes>
             <div>{quote.quote}</div>
-            <h.Author>{quote.author}</h.Author>
-          </h.LifeQuotes>
+            <Author>{quote.author}</Author>
+          </LifeQuotes>
         )}
-      </h.TotalBottom>
+      </TotalBottom>
 
-      <Test />
+      {/* <Test /> */}
     </Layout>
   );
 };
