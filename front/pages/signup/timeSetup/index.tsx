@@ -9,7 +9,7 @@ const TimeSetup = () => {
   const password = query.password as string;
 
   return (
-    <Layout isHeader={false}>
+    <Layout isHeader={false} type="로그인">
       <WorryTimeSetter name={name} password={password} />
     </Layout>
   );

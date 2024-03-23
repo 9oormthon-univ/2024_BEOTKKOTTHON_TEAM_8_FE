@@ -63,7 +63,7 @@ const PastLetter = () => {
 
   if (isLoading) {
     return (
-      <Layout isHeader={true} type={'과거의 나로부터'}>
+      <Layout isHeader={true} type={'과거의 내가'}>
         <Container>Loading...</Container>
       </Layout>
     );
