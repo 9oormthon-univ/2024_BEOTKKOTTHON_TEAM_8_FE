@@ -55,7 +55,7 @@ const Report = () => {
           setWords(res.data.result.wordsList);
 
           const maxVal = Math.max(
-            ...res.data.result.wordsList.map((word) => word.value),
+            ...res.data.result.wordsList.map((word: Word) => word.value),
           );
           setMaxValue(maxVal);
 
