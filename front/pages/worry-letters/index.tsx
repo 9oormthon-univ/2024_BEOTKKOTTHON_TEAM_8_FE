@@ -25,7 +25,7 @@ const Home = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0); // 현재 페이지 인덱스
   const [currentPageData, setCurrenPageData] = useState<Item>();
   const [isDelete, setIsDelete] = useState(false);
-  const [isBlur, setIsBlur] = useState<Boolean>(false);
+  const [isBlur, setIsBlur] = useState<boolean>(false);
   const [message, setMessage] = useState('걱정을 계속 보관할게');
   const [writeSolution, setWriteSolution] = useState<string>('');
   const [isSolution, setIsSolution] = useState(false);
@@ -192,7 +192,8 @@ const Home = () => {
             <>
               <LetterPaper
                 message={currentPageData?.worryText}
-                isBlur={isBlur}></LetterPaper>
+                isBlur={isBlur}
+              />
               <SolutionBox setInput={setWriteSolution} input={writeSolution} />
               {isBlur && (
                 <W.PassTime>

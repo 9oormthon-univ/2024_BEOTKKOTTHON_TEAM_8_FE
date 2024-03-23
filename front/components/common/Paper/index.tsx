@@ -13,7 +13,7 @@ const Paper = ({
   setInput?: React.Dispatch<React.SetStateAction<string>>;
   message?: string;
   isHidden?: boolean;
-  isBlur?: Boolean;
+  isBlur?: boolean;
 }) => {
   return (
     <S.Container isHidden={isHidden}>
