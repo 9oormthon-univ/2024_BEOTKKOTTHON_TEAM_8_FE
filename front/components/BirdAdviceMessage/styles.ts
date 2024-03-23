@@ -12,7 +12,7 @@ export const Bubble = styled.div`
   align-items: center;
   white-space: pre-wrap;
 
-  width: 14.1rem;
+  width: 18rem;
   height: max-content;
   background: rgba(0, 0, 0, 0.1);
   border-radius: 1rem;

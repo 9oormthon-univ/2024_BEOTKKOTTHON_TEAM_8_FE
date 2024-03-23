@@ -21,6 +21,7 @@ export const Input = styled.textarea<{ isBlur: Boolean }>`
   background: transparent;
   text-overflow: ellipsis;
   line-height: 1.4;
+  filter: blur(5px);
   filter: ${(props) => props.isBlur && 'blur(5px)'};
 
   position: absolute;

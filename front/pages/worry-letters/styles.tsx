@@ -20,15 +20,18 @@ export const BottomBtn = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
 `;
-export const Button = styled.div`
+export const Button = styled.div<{ isWrite: boolean }>`
   width: 109px;
   height: 36px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.5);
+  background: ${(props) =>
+    props.isWrite ? 'rgba(0, 0, 0, 0.1)' : 'rgba(0,0,0,0.05)'};
+  color: ${(props) =>
+    props.isWrite ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0,0,0,0.25)'};
+  pointer-events: ${(props) => !props.isWrite && 'none'};
   font-size: 1.6rem;
   font-weight: 400;
   text-align: center;
