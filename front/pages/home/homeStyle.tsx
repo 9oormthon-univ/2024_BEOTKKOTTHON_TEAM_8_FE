@@ -87,3 +87,12 @@ export const LifeQuotes = styled.div`
 export const Author = styled.div`
   margin-top: 10px;
 `;
+export const BubbleContainer = styled.div<{ topSize: number }>`
+  position: relative;
+  width: 100%;
+  display: flex;
+  top: ${(props) => `${props.topSize}rem`};
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+`;

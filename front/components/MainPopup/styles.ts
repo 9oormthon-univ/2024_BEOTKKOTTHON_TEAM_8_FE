@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-export const BubbleContainer = styled.div<{ topSize: number }>`
-  position: relative;
-  width: 100%;
-  display: flex;
-  top: ${(props) => `${props.topSize}rem`};
-  justify-content: center;
-  align-items: center;
-  gap: 3px;
-`;
-
 export const Bubble = styled.div`
   display: flex;
   justify-content: center;

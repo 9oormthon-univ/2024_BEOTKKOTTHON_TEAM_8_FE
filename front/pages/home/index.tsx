@@ -28,6 +28,7 @@ const Home = () => {
   const [isOpenTime, setIsOpenTime] = useState<Boolean>(false);
   const [worryNum, setWorryNum] = useState<number>(0);
   const [message, setMessage] = useState<string>('');
+  const [closePopup, setClosePopup] = useState(false);
   const userId = useRecoilValue(userIdState);
   const [startHour, startMin] = useRecoilValue(startTimeState)
     .split(':')
@@ -123,8 +124,12 @@ const Home = () => {
 
   //보관함열기 클릭
   const handleOpenBox = () => {
-    !isOpenTime && setMessage('아직 열 수 없어');
-    router.push('/worry-letters');
+    if (isOpenTime) {
+      router.push('/worry-letters');
+    } else {
+      setMessage('아직 열 수 없어');
+      setClosePopup(false);
+    }
   };
 
   return (
@@ -141,7 +146,16 @@ const Home = () => {
         <h.SubTitle>{`보관함이 열리기까지`}</h.SubTitle>
       )}
       <h.Time>{`${openRemainTime?.hours}시간 ${openRemainTime?.minutes}분 ${openRemainTime?.seconds}초`}</h.Time>
-      {message && <MainPopup text={message} topSize={4} />}
+      {message && !closePopup && (
+        <h.BubbleContainer topSize={4}>
+          <MainPopup text={message} />
+          <img
+            src={'/xBtn.svg'}
+            style={{ cursor: 'pointer' }}
+            onClick={() => setClosePopup(true)}
+          />
+        </h.BubbleContainer>
+      )}
       <h.MainImg src="/birdBox.svg" />
       <h.BottomMenues>
         <h.Menu
