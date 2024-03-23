@@ -64,7 +64,7 @@ export const ImageWrapper = styled.div`
   left: 15%;
 `;
 
-export const Message = styled.h1<{ isPast: boolean }>`
+export const Message = styled.h1<{ isPast?: boolean }>`
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 16px;
