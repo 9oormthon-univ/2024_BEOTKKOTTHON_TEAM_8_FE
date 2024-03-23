@@ -13,7 +13,7 @@ const Header = ({ type }: { type?: string }) => {
   const router = useRouter();
 
   useEffect(() => {
-    setSelectIcon(type);
+    if (type) setSelectIcon(type);
     console.log(type);
   }, [type]);
 
