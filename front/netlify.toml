@@ -1,4 +1,9 @@
 [[redirects]]
+command = "npm run dev"
+publish = "/front/.next"
+base = "/front"
+
+[[redirects]]
 from = "/*"
 to = "/index.html"
 status = 200
