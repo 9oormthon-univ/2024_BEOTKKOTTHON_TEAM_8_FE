@@ -49,9 +49,8 @@ const WorryTimeSetter = (props: Props) => {
         })
         .then((res) => {
           if (res.data.code === 200) {
-            setUserId(res.data.result.userId);
             setPassword('');
-            router.push('/home');
+            router.push('/login');
           }
         })
         .catch((err) => {

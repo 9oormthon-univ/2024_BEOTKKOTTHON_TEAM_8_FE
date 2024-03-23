@@ -117,13 +117,16 @@ const Auth = (props: Props) => {
         .then((res) => {
           console.log(res);
           if (res.data.code == 200) {
-            router.push('/login');
+            router.push('/home');
+
             setEndTime(res.data.result.endTime);
             setStartTime(res.data.result.startTime);
           }
           if (res.data.code >= 4000) {
             setMessage('별명과 비밀번호를 다시 확인해줘');
           }
+
+          setUserId(res.data.result.userId);
         })
         .catch((err) => {
           console.error(err);
