@@ -78,12 +78,14 @@ const Home = () => {
 
   useEffect(() => {
     //updateAt기준으로
-    const writeDate = new Date(currentPageData?.updateAt);
-    const currentDate = new Date();
-    writeDate.setDate(writeDate.getDate() + 3);
-    let isThreeDaysLater =
-      writeDate.toDateString() >= currentDate.toDateString();
-    setIsBlur(isThreeDaysLater);
+    if (currentPageData) {
+      const writeDate = new Date(currentPageData?.updateAt);
+      const currentDate = new Date();
+      writeDate.setDate(writeDate.getDate() + 3);
+      let isThreeDaysLater =
+        writeDate.toDateString() >= currentDate.toDateString();
+      setIsBlur(isThreeDaysLater);
+    }
   }, [worryData, currentPageIndex]);
 
   // 걱정 데이터 불러오기
@@ -170,106 +172,123 @@ const Home = () => {
   }, [writeSolution]);
 
   return (
-    <Layout isHeader={true} type="보관함으로">
-      <W.Total>
-        <div>
-          {isPopup && (
-            <Popup text={message} topSize={12} onClose={() => setMessage('')} />
-          )}
-          {isSolutionSave && (
-            <Popup
-              text={'해결책을 잘 보관하고 있을게.'}
-              topSize={15}
-              onClose={() => setMessage('')}
+    currentPageData && (
+      <Layout isHeader={true} type="보관함으로">
+        <W.Total>
+          <div>
+            {isPopup && (
+              <Popup
+                text={message}
+                topSize={12}
+                onClose={() => setMessage('')}
+              />
+            )}
+            {isSolutionSave && (
+              <Popup
+                text={'해결책을 잘 보관하고 있을게.'}
+                topSize={15}
+                onClose={() => setMessage('')}
+              />
+            )}
+            <W.WorryDate>
+              {makeCurrent}의 걱정
+              {isDelete && '을 보내줄게'}
+            </W.WorryDate>
+            {isDelete && <W.gif src={'/MailSolve_ver2.gif'} />}
+            {!isDelete && (
+              <>
+                <LetterPaper
+                  message={currentPageData?.worryText}
+                  isBlur={isBlur}
+                />
+                <SolutionBox
+                  setInput={setWriteSolution}
+                  input={writeSolution}
+                />
+                {isBlur && (
+                  <W.PassTime>
+                    <W.BirdImg src="./birdImg.svg" />
+                    <BirdAdviceMessage
+                      text={'시간이 흘러 \n흐려진 걱정이 있어 \n여전히 걱정돼?'}
+                      leftSize={14}
+                    />
+                  </W.PassTime>
+                )}
+                {isBlur ? (
+                  <W.BottomBtn>
+                    <W.Button
+                      isWrite={true}
+                      onClick={() =>
+                        handleStillWorry(currentPageData?.memoId)
+                      }>{`아직 걱정돼`}</W.Button>
+                    <W.Button
+                      isWrite={true}
+                      onClick={() =>
+                        deleteWorry(currentPageData?.memoId)
+                      }>{`이제 괜찮아`}</W.Button>
+                  </W.BottomBtn>
+                ) : (
+                  <W.BottomBtn>
+                    <W.Button
+                      isWrite={isSolution}
+                      onClick={() =>
+                        handleSaveSolution(currentPageData?.memoId)
+                      }>{`저장하기`}</W.Button>
+                    <W.Button
+                      isWrite={true}
+                      onClick={() =>
+                        deleteWorry(currentPageData.memoId)
+                      }>{`보내주기`}</W.Button>
+                  </W.BottomBtn>
+                )}
+              </>
+            )}
+          </div>
+        </W.Total>
+        <W.BirdContainer>
+          {!isBlur && (
+            <W.BirdImg
+              src="./speakBird.svg"
+              onClick={() => handleAdvice(currentPageData.worryText)}
             />
           )}
-          <W.WorryDate>
-            {makeCurrent}의 걱정
-            {isDelete && '을 보내줄게'}
-          </W.WorryDate>
-          {isDelete && <W.gif src={'/MailSolve_ver2.gif'} />}
-          {!isDelete && (
-            <>
-              <LetterPaper
-                message={currentPageData?.worryText}
-                isBlur={isBlur}
-              />
-              <SolutionBox setInput={setWriteSolution} input={writeSolution} />
-              {isBlur && (
-                <W.PassTime>
-                  <W.BirdImg src="./birdImg.svg" />
-                  <BirdAdviceMessage
-                    text={'시간이 흘러 \n흐려진 걱정이 있어 \n여전히 걱정돼?'}
-                    leftSize={14}
-                  />
-                </W.PassTime>
-              )}
-              {isBlur ? (
-                <W.BottomBtn>
-                  <W.Button
-                    isWrite={true}
-                    onClick={() =>
-                      handleStillWorry(currentPageData?.memoId)
-                    }>{`아직 걱정돼`}</W.Button>
-                  <W.Button
-                    isWrite={true}
-                    onClick={() =>
-                      deleteWorry(currentPageData?.memoId)
-                    }>{`이제 괜찮아`}</W.Button>
-                </W.BottomBtn>
-              ) : (
-                <W.BottomBtn>
-                  <W.Button
-                    isWrite={isSolution}
-                    onClick={() =>
-                      handleSaveSolution(currentPageData?.memoId)
-                    }>{`저장하기`}</W.Button>
-                  <W.Button
-                    isWrite={true}
-                    onClick={() =>
-                      deleteWorry(currentPageData.memoId)
-                    }>{`보내주기`}</W.Button>
-                </W.BottomBtn>
-              )}
-            </>
-          )}
-        </div>
-      </W.Total>
-      <W.BirdContainer>
-        {!isBlur && (
-          <W.BirdImg
-            src="./speakBird.svg"
-            onClick={() => handleAdvice(currentPageData.worryText)}
-          />
-        )}
 
-        {!isDelete && advice && (
-          <BirdAdviceMessage text={advice} leftSize={15} />
+          {!isDelete && advice && (
+            <BirdAdviceMessage text={advice} leftSize={15} />
+          )}
+        </W.BirdContainer>
+        {isDelete && (
+          <W.FullWidth>
+            <W.Button
+              isWrite={true}
+              onClick={() => router.push('/home')}>{`돌아가기`}</W.Button>
+          </W.FullWidth>
         )}
-      </W.BirdContainer>
-      {isDelete && (
-        <W.FullWidth>
-          <W.Button onClick={() => router.push('/home')}>{`돌아가기`}</W.Button>
-        </W.FullWidth>
-      )}
-      {!isDelete && !isBlur && (
-        <W.PageBtn>
-          {currentPageIndex === 0 ? (
-            <W.MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
-          ) : currentPageIndex === worryData.length - 1 ? (
-            <W.MoveBtn src="./leftBtn.svg" onClick={() => goToPreviousPage()} />
-          ) : (
-            <>
+        {!isDelete && !isBlur && (
+          <W.PageBtn>
+            {currentPageIndex === 0 ? (
+              <W.MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
+            ) : currentPageIndex === worryData.length - 1 ? (
               <W.MoveBtn
                 src="./leftBtn.svg"
                 onClick={() => goToPreviousPage()}
               />
-              <W.MoveBtn src="./rightBtn.svg" onClick={() => goToNextPage()} />
-            </>
-          )}
-        </W.PageBtn>
-      )}
-    </Layout>
+            ) : (
+              <>
+                <W.MoveBtn
+                  src="./leftBtn.svg"
+                  onClick={() => goToPreviousPage()}
+                />
+                <W.MoveBtn
+                  src="./rightBtn.svg"
+                  onClick={() => goToNextPage()}
+                />
+              </>
+            )}
+          </W.PageBtn>
+        )}
+      </Layout>
+    )
   );
 };
 
