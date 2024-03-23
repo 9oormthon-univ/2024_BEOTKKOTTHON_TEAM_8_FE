@@ -5,7 +5,7 @@ export const TotalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 3.7rem;
+  margin-top: 1.7rem;
   padding: 0 4rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -35,6 +35,6 @@ export const HeaderName = styled.div`
 `;
 export const Circle = styled.img`
   position: absolute;
-  top: 4.1rem;
+  top: 2.1rem;
   z-index: 1;
 `;
