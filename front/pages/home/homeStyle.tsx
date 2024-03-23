@@ -62,16 +62,15 @@ export const Menu = styled.div`
 `;
 export const WorryCount = styled.div`
   position: absolute;
-  width: 21.84px;
-  height: 21.84px;
+  padding: 0.4rem;
   border-radius: 50%;
   background: #869daa;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 400;
   text-align: center;
   color: #fff;
-  right: -0.6rem;
-  top: -0.7rem;
+  right: -0.8rem;
+  top: -1.4rem;
 `;
 export const LifeQuotes = styled.div`
   position: absolute;
