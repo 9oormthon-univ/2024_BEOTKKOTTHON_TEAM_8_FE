@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '@/layout';
-import MainIntro from '@/components/intro/mainIntro';
-import TextIntro from '@/components/intro/textIntro';
+import MainIntro from '@/components/Intro/mainIntro';
+import TextIntro from '@/components/Intro/textIntro';
 import LoginOption from '@/components/LoginOptions';
 import { useRecoilValue } from 'recoil';
 import { nameState } from '@/recoil/states';
