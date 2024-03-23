@@ -10,6 +10,9 @@ export const FullImg = styled.div`
 export const ReportImg = styled.img`
   margin-right: 1.2rem;
   margin-bottom: 1.5rem;
+  @media (max-height: 736px) {
+    margin-bottom: 0;
+  }
 `;
 export const SubTitle = styled.div`
   font-size: 1.2rem;
@@ -23,35 +26,60 @@ export const Time = styled.div`
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
 `;
+export const ImgTotal = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 export const MainImg = styled.img`
   position: absolute;
   width: 100%;
   bottom: 0;
-  @media (max-height: 715px) {
+  @media (max-height: 736px) {
     position: fixed;
-    bottom: -80px;
+    bottom: -11rem;
   }
-  ${media[2]} {
+  ${media[1]} {
     width: 391px;
+    position: fixed;
+    bottom: -8rem;
   }
 `;
+export const TotalBottom = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  bottom: 10rem;
+  @media (max-height: 736px) {
+    bottom: 6.17vh;
+  }
+  ${media[1]} {
+    bottom: 7.17vh;
+  }
+`;
+
 export const BottomMenues = styled.div`
+  gap: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 11px;
-  position: absolute;
-  bottom: 23.17vh;
-  width: 100%;
-  @media (max-height: 715px) {
-    bottom: 19.17vh;
+  margin-bottom: 5.6rem;
+  ${media[1]} {
+    margin-bottom: 3.6rem;
+  }
+  @media (max-height: 736px) {
+    margin-bottom: 1.6rem;
   }
 `;
 export const Menu = styled.div`
   cursor: pointer;
   position: relative;
   width: 10.9rem;
-  height: 37px;
+  height: 3.7rem;
   font-size: 1.6rem;
   background-color: #d9d9d9;
   border-radius: 10px;
@@ -73,16 +101,26 @@ export const WorryCount = styled.div`
   top: -1.4rem;
 `;
 export const LifeQuotes = styled.div`
-  position: absolute;
-  bottom: 13.6vh;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
   font-size: 1.2rem;
   width: 100%;
-  @media (max-height: 715px) {
-    bottom: 10.6vh;
+  @media (max-height: 736px) {
+    bottom: 3rem;
   }
 `;
 export const Author = styled.div`
   margin-top: 10px;
+`;
+export const BubbleContainer = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  top: 6rem;
+  @media (max-height: 736px) {
+    top: 2rem;
+  }
 `;

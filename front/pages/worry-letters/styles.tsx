@@ -7,12 +7,15 @@ export const Total = styled.div`
   flex-direction: column;
 `;
 export const WorryDate = styled.div`
-  margin-top: 13.1rem;
+  margin-top: 15.5vh;
   font-size: 2rem;
   font-weight: 400;
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
   margin-bottom: 1.5rem;
+  @media (max-height: 715px) {
+    margin-top: 5.5vh;
+  }
 `;
 export const BottomBtn = styled.div`
   display: flex;
@@ -51,6 +54,9 @@ export const BirdContainer = styled.div`
 export const BirdImg = styled.img`
   margin-top: 3.3rem;
   justify-content: flex-start;
+  @media (max-height: 715px) {
+    margin-top: 0.3rem;
+  }
 `;
 export const PageBtn = styled.div`
   display: flex;
