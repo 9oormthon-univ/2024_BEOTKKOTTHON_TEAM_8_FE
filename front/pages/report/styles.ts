@@ -1,19 +1,47 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 3.6rem;
+`;
+
+export const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
 export const ReportTxt = styled.div`
   font-size: 3.2rem;
   font-weight: 400;
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
-  margin-top: 12.4rem;
-  margin-bottom: 3rem;
 `;
-export const Container = styled.div`
+
+export const Date = styled.div`
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 12px;
+  text-align: center;
+
+  color: rgba(0, 0, 0, 0.5);
+`;
+
+export const Box = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
+
 export const ReportTxtBox = styled.div`
   width: 100%;
   height: 12rem;
@@ -24,17 +52,48 @@ export const ReportTxtBox = styled.div`
     display: block;
   }
 `;
-export const BottomContainer = styled.div`
+
+export const ResultBox = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 4.6rem;
+`;
+
+export const ResultTextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 
+  gap: 0.8rem;
+
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 20px;
+
+  color: rgba(0, 0, 0, 0.46);
+`;
+
+export const AdviceBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.9rem;
+`;
+
+export const BottomContainer = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 1rem;
 `;
-export const BirdImg = styled.img`
-  margin-right: 3.4rem;
-  margin-left: 6rem;
-`;
+
 export const Goback = styled.div`
+  cursor: pointer;
+
   width: 109px;
   height: 36px;
   border-radius: 10px;
@@ -46,4 +105,14 @@ export const Goback = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+`;
+
+export const LodingContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
