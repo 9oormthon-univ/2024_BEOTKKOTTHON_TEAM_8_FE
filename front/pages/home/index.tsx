@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import Layout from '@/layout';
 import { api } from '@/apis/api';
 import * as h from './homeStyle';
+import { useRouter } from 'next/router';
 import MainPopup from '@/components/MainPopup';
 import quotesData from '@/public/json/quote.json';
 import { endTimeState, startTimeState, userIdState } from '@/recoil/states';
 import { useRecoilValue } from 'recoil';
-import { useRouter } from 'next/router';
 import Test from '@/Test';
 
 interface Time {
@@ -33,7 +33,6 @@ const Home = () => {
     .split(':')
     .map(Number);
   const [endHour, endMin] = useRecoilValue(endTimeState).split(':').map(Number);
-
   const openTime = new Date();
   openTime.setHours(startHour, startMin, 0);
   const closeTime = new Date();
@@ -125,6 +124,7 @@ const Home = () => {
   //보관함열기 클릭
   const handleOpenBox = () => {
     !isOpenTime && setMessage('아직 열 수 없어');
+    router.push('/worry-letters');
   };
 
   return (
