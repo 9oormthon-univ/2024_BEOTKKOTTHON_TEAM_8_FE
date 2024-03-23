@@ -147,7 +147,7 @@ const Home = () => {
       )}
       <h.Time>{`${openRemainTime?.hours}시간 ${openRemainTime?.minutes}분 ${openRemainTime?.seconds}초`}</h.Time>
       {message && !closePopup && (
-        <h.BubbleContainer topSize={4}>
+        <h.BubbleContainer>
           <MainPopup text={message} />
           <img
             src={'/xBtn.svg'}
@@ -156,21 +156,25 @@ const Home = () => {
           />
         </h.BubbleContainer>
       )}
-      <h.MainImg src="/birdBox.svg" />
-      <h.BottomMenues>
-        <h.Menu
-          onClick={() => router.push('/worry-write')}>{`걱정 넣기`}</h.Menu>
-        <h.Menu onClick={() => handleOpenBox()}>
-          {`보관함 열기`}
-          {!isOpenTime && worryNum && <h.WorryCount>{worryNum}</h.WorryCount>}
-        </h.Menu>
-      </h.BottomMenues>
-      {quote && (
-        <h.LifeQuotes>
-          <div>{quote.quote}</div>
-          <h.Author>{quote.author}</h.Author>
-        </h.LifeQuotes>
-      )}
+      <h.ImgTotal>
+        <h.MainImg src="/birdBox.svg" />
+      </h.ImgTotal>
+      <h.TotalBottom>
+        <h.BottomMenues>
+          <h.Menu
+            onClick={() => router.push('/worry-write')}>{`걱정 넣기`}</h.Menu>
+          <h.Menu onClick={() => handleOpenBox()}>
+            {`보관함 열기`}
+            {!isOpenTime && worryNum && <h.WorryCount>{worryNum}</h.WorryCount>}
+          </h.Menu>
+        </h.BottomMenues>
+        {quote && (
+          <h.LifeQuotes>
+            <div>{quote.quote}</div>
+            <h.Author>{quote.author}</h.Author>
+          </h.LifeQuotes>
+        )}
+      </h.TotalBottom>
 
       <Test />
     </Layout>
