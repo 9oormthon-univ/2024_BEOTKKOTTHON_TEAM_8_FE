@@ -12,6 +12,8 @@ const fadeOut = keyframes`
 `;
 export const MainIntroTotal = styled.div`
   animation: ${fadeOut} 2s ease-out 1s forwards;
+
+  overflow-y: hidden;
 `;
 export const SubTitle = styled.div`
   font-size: 1.1rem;
