@@ -20,7 +20,7 @@ interface Word {
 
 interface Option {
   rotations: number;
-  rotationAngles: number[];
+  rotationAngles: [number, number];
   spiral: string;
   scale: string;
   fontFamily: string;
@@ -90,15 +90,6 @@ const Report = () => {
     onWordMouseOver: console.log,
   };
 
-  const options: Option = {
-    rotations: -1000,
-    rotationAngles: [0, 0],
-    spiral: 'archimedean', // 단어들이 중앙에서 바깥으로 나선형으로 퍼지도록
-    scale: 'sqrt', // 큰 단어는 조금 더 크게, 작은 단어는 더 작게
-    fontFamily: 'chosunNM',
-    fontSizes: [10, 40], // 단어의 최소 크기와 최대 크기
-  };
-
   return (
     <Layout isHeader={true}>
       {isLoading ? (
@@ -116,7 +107,14 @@ const Report = () => {
               <ReactWordcloud
                 words={words}
                 callbacks={callbacks}
-                options={options}
+                options={{
+                  rotations: -1000,
+                  rotationAngles: [0, 0],
+                  spiral: 'archimedean', // 단어들이 중앙에서 바깥으로 나선형으로 퍼지도록
+                  scale: 'sqrt', // 큰 단어는 조금 더 크게, 작은 단어는 더 작게
+                  fontFamily: 'chosunNM',
+                  fontSizes: [10, 40], // 단어의 최소 크기와 최대 크기
+                }}
               />
             </R.ReportTxtBox>
             <R.ResultBox>
