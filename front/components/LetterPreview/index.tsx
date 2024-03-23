@@ -2,7 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as S from './styles';
 import LetterDateRangeText from '../common/LetterDateRangeText';
-import LetterSVG from '../../public/assets/icons/envelope.svg';
+import { motion } from 'framer-motion';
+
+const pageVariants = {
+  initial: { opacity: 0.6 },
+  in: { opacity: 1 },
+  out: { opacity: 0.4 },
+};
+
+const pageTransition = {
+  type: 'tween',
+  ease: 'anticipate',
+  duration: 1,
+};
 
 const LetterPreview = ({
   isSent,
@@ -33,7 +45,12 @@ const LetterPreview = ({
   };
 
   return (
-    <>
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}>
       {sendDate && (
         <S.Containter>
           {!isSent && (
@@ -49,7 +66,7 @@ const LetterPreview = ({
           <S.Button onClick={handleAction}>{btnText}</S.Button>
         </S.Containter>
       )}
-    </>
+    </motion.div>
   );
 };
 

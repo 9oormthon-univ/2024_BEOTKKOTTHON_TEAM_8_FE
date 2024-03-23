@@ -11,6 +11,10 @@ export const Container = styled.h1`
   line-height: 1.5;
 
   text-align: center;
+
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
 `;
 
 export const HighlightText = styled.span`

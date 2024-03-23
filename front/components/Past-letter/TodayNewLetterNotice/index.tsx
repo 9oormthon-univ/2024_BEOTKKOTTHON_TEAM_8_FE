@@ -20,6 +20,13 @@ const TodayNewLetterNotice = () => {
     isTodayLetterNoticeViewState,
   );
 
+  const [isAnimationFinished, setIsAnimationFinished] =
+    useState<boolean>(false);
+
+  setTimeout(() => {
+    setIsAnimationFinished(true);
+  }, 5500);
+
   useEffect(() => {
     api
       .get(`/letters/${userId}`)
@@ -32,12 +39,18 @@ const TodayNewLetterNotice = () => {
   }, []);
 
   return (
-    <LetterPreview
-      isSent={false}
-      sendDate={sendDate}
-      arrivalDate={arrivalDate}
-      setState={setIsTodayLetterNoticeView}
-    />
+    <>
+      {isAnimationFinished ? (
+        <LetterPreview
+          isSent={false}
+          sendDate={sendDate}
+          arrivalDate={arrivalDate}
+          setState={setIsTodayLetterNoticeView}
+        />
+      ) : (
+        <img src="/assets/mailFromMe.gif" />
+      )}
+    </>
   );
 };
 
