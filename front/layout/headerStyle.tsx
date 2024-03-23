@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const TotalHeader = styled.div`
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   width: 100%;
