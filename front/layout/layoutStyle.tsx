@@ -16,7 +16,7 @@ export const Totalframe = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  ${media[2]} {
+  ${media[1]} {
     position: relative;
     width: 391px;
   }
