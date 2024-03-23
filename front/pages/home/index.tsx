@@ -110,6 +110,8 @@ export const WorryCount = styled.div`
   color: #fff;
   right: -0.8rem;
   top: -1.4rem;
+  width: 21.84px;
+  height: 21.84px;
 `;
 export const LifeQuotes = styled.div`
   text-align: center;
