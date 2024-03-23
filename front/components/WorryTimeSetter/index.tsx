@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import {
   currentWorryTimeState,
+  nameState,
   passwordState,
   userIdState,
 } from '@/recoil/states';
@@ -19,7 +20,7 @@ const WorryTimeSetter = (props: Props) => {
   const router = useRouter();
 
   const [worryTimeText, setWorryTimeText] = useState('시작할 시간');
-
+  const setName = useSetRecoilState(nameState);
   const setPassword = useSetRecoilState(passwordState);
   const setUserId = useSetRecoilState(userIdState);
 
@@ -50,6 +51,7 @@ const WorryTimeSetter = (props: Props) => {
         .then((res) => {
           if (res.data.code === 200) {
             setPassword('');
+            setName('');
             router.push('/login');
           }
         })

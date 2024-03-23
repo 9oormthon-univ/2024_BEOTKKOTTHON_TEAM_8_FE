@@ -104,12 +104,14 @@ export const WorryCount = styled.div`
   padding: 0.4rem;
   border-radius: 50%;
   background: #869daa;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 400;
   text-align: center;
   color: #fff;
   right: -0.8rem;
   top: -1.4rem;
+  width: 23.84px;
+  height: 23.84px;
 `;
 export const LifeQuotes = styled.div`
   text-align: center;
@@ -291,7 +293,7 @@ const Home = () => {
           <Menu onClick={() => router.push('/worry-write')}>{`걱정 넣기`}</Menu>
           <Menu onClick={() => handleOpenBox()}>
             {`보관함 열기`}
-            {!isOpenTime && <WorryCount>{worryNum}</WorryCount>}
+            {!isOpenTime && worryNum && <WorryCount>{worryNum}</WorryCount>}
           </Menu>
         </BottomMenues>
         {quote && (
