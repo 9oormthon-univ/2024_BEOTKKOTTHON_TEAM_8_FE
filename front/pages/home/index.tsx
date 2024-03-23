@@ -104,14 +104,14 @@ export const WorryCount = styled.div`
   padding: 0.4rem;
   border-radius: 50%;
   background: #869daa;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 400;
   text-align: center;
   color: #fff;
   right: -0.8rem;
   top: -1.4rem;
-  width: 21.84px;
-  height: 21.84px;
+  width: 23.84px;
+  height: 23.84px;
 `;
 export const LifeQuotes = styled.div`
   text-align: center;
