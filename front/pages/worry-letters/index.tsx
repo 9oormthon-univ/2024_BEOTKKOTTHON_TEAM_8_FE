@@ -286,7 +286,7 @@ const Home = () => {
                   {makeCurrent}의 걱정
                   {isDelete && '을 보내줄게'}
                 </WorryDate>
-                {isDelete && <img src={'/MailSolve_ver2.gif'} />}
+                {isDelete && <img src={'/mailSolve.gif'} />}
                 {!isDelete && (
                   <>
                     <LetterPaper
@@ -358,7 +358,7 @@ const Home = () => {
                   onClick={() => router.push('/home')}>{`돌아가기`}</Button>
               </FullWidth>
             )}
-            {!isDelete && !isBlur && (
+            {worryData.length > 1 && !isDelete && !isBlur && (
               <PageBtn>
                 {currentPageIndex === 0 ? (
                   <MoveBtn
