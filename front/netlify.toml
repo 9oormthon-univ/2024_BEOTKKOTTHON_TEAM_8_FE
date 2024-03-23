@@ -1,7 +1,7 @@
 [[redirects]]
-command = "npm run dev"
-publish = "/front/.next"
-base = "/front"
+command = "npm run build"
+publish = "/build"
+base = "/"
 
 [[redirects]]
 from = "/*"
