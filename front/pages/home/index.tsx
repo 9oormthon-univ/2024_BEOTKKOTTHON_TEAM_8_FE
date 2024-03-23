@@ -46,7 +46,7 @@ export const ImgTotal = styled.div`
 export const MainImg = styled.img`
   position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: -5rem;
   @media (max-height: 736px) {
     position: fixed;
     bottom: -11rem;
