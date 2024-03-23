@@ -5,7 +5,7 @@ export const TotalHeader = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 5.7rem;
-  padding: 0px 2rem;
+  padding: 0 4rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
