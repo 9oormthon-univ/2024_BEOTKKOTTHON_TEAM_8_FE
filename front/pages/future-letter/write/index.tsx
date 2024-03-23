@@ -33,7 +33,7 @@ export const Box = styled.div`
   gap: 2.8rem;
 `;
 
-const BtnWraaper = styled.div<{ isHidden: boolean }>`
+const BtnWraaper = styled.div`
   display: flex;
   gap: 1.3rem;
 
@@ -41,8 +41,6 @@ const BtnWraaper = styled.div<{ isHidden: boolean }>`
   right: 22%;
   bottom: -22%;
 
-  opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
-  visibility: ${({ isHidden }) => (isHidden ? 'hidden' : 'visible')};
   transition:
     opacity 3s ease-out,
     visibility 3s ease-out;
@@ -64,9 +62,7 @@ const Write = () => {
 
   const [message, setMessage] = useState('');
 
-  const [isBtnWrapperHidden, setIsBtnWrapperHidden] = useState(false);
-  const [isBoxHidden, setIsBoxHidden] = useState(false);
-
+  const [isSend, setIsSend] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
   /** GIF 끝나기까지의 추정시간 */
@@ -85,14 +81,7 @@ const Write = () => {
         })
         .then((res) => {
           console.log(res);
-          setTimeout(() => {
-            setIsBtnWrapperHidden(true);
-          }, 1000); // 4초 후 BtnWrapper를 사라지게 함
-
-          // 1초 후 BtnWrapper가 완전히 숨겨진 후 Box를 숨김
-          setTimeout(() => {
-            setIsBoxHidden(true);
-          }, 2000);
+          setIsSend(true);
         })
         .catch((err) => {
           console.error(err);
@@ -103,26 +92,23 @@ const Write = () => {
   return (
     <Layout isHeader={true} type="보관함으로">
       <Contatiner>
-        <Box>
-          {message && <Popup text={message} onClose={() => setMessage('')} />}
-          <LetterDateRange sendDate={today} arrivalDate={arrivalDate} />
-          {!isBoxHidden ? (
-            <LetterPaper
-              isHidden={isBoxHidden}
-              input={input}
-              setInput={setInput}
-            />
-          ) : isAnimationFinished ? (
+        {isSend ? (
+          isAnimationFinished ? (
             <LetterPreview
               isSent={true}
               sendDate={today}
               arrivalDate={arrivalDate}
             />
           ) : (
-            '' // GIF 애니메이션
-          )}
-          {!isBtnWrapperHidden && (
-            <BtnWraaper isHidden={isBtnWrapperHidden}>
+            <img src="/assets/mailToMe.gif" />
+          )
+        ) : (
+          <Box>
+            {message && <Popup text={message} onClose={() => setMessage('')} />}
+            <LetterDateRange sendDate={today} arrivalDate={arrivalDate} />
+            <LetterPaper input={input} setInput={setInput} />
+
+            <BtnWraaper>
               <div
                 onClick={() => router.push('/future-letter/dateSetup')}
                 style={{ cursor: 'pointer' }}>
@@ -132,8 +118,8 @@ const Write = () => {
                 <img src="/assets/icons/rightBtn.svg" />
               </div>
             </BtnWraaper>
-          )}
-        </Box>
+          </Box>
+        )}
       </Contatiner>
     </Layout>
   );

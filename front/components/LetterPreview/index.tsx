@@ -35,12 +35,10 @@ const LetterPreview = ({
     <>
       {sendDate && (
         <S.Containter>
-          {!isSent && (
-            <LetterDateRangeText
-              sendDate={sendDate}
-              arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
-            />
-          )}
+          <LetterDateRangeText
+            sendDate={sendDate}
+            arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
+          />
           <div>
             <img src="/assets/icons/envelope.svg" />
           </div>
