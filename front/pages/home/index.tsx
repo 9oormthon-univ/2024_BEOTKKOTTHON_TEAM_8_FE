@@ -44,7 +44,7 @@ export const ImgTotal = styled.div`
   align-items: center;
 `;
 export const MainImg = styled.img`
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: -5rem;
   @media (max-height: 736px) {
@@ -64,7 +64,7 @@ export const TotalBottom = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  bottom: 10rem;
+  bottom: 8rem;
   @media (max-height: 736px) {
     bottom: 6.17vh;
   }
