@@ -14,7 +14,6 @@ const Header = ({ type }: { type?: string }) => {
 
   useEffect(() => {
     if (type) setSelectIcon(type);
-    console.log(type);
   }, [type]);
 
   const handleMenuClick = (index: number, name: string) => {

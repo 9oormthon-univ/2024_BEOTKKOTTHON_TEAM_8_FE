@@ -80,7 +80,6 @@ const Write = () => {
           letter: input,
         })
         .then((res) => {
-          console.log(res);
           setIsSend(true);
         })
         .catch((err) => {

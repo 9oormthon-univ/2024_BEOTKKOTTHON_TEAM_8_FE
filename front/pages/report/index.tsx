@@ -175,7 +175,6 @@ const Report = () => {
     api
       .get(`/cloud/${userId}/version2`)
       .then((res) => {
-        console.log(res.data);
         if (res.data.isSuccess) {
           setWords(res.data.result.wordsList);
 

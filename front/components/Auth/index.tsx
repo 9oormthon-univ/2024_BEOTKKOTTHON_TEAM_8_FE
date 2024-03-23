@@ -115,7 +115,6 @@ const Auth = (props: Props) => {
       api
         .post('/users/login', { name: nickname, password: pwd })
         .then((res) => {
-          console.log(res);
           if (res.data.code == 200) {
             router.push('/home');
 
