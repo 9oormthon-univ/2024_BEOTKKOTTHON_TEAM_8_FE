@@ -17,7 +17,7 @@ const BirdMessenger = ({
         <img src="/assets/icons/bird.svg" />
       </S.ImageWrapper>
       <S.Bubble>
-        <S.Message isPast={isPast}>
+        <S.Message isPast={isPast ?? false}>
           {message ? (
             message
           ) : isPast ? (
