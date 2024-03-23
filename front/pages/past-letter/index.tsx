@@ -36,9 +36,11 @@ const PastLetter = () => {
     isTodayLetterNoticeViewState,
   ); // 오늘 도착한 편지가 있는지
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     Promise.all([
       api.get(`/letters/${userId}`),
       api.get(`/letters/${userId}/existence`),
@@ -47,6 +49,7 @@ const PastLetter = () => {
         if (lettersResponse.data.code === 200) {
           setLetters(lettersResponse.data.result);
           setHasLetter(lettersResponse.data.result.length > 0);
+          setIsLoading(false);
         }
 
         if (existenceResponse.data.code === 200) {
@@ -55,29 +58,27 @@ const PastLetter = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
+        setIsLoading(true);
       });
   }, [userId, setIsTodayLetterNoticeView]);
 
-  if (isLoading) {
-    return (
-      <Layout isHeader={true}>
-        <Container>Loading...</Container>
-      </Layout>
-    );
-  }
-
   return (
-    <Layout isHeader={true}>
+    <Layout isHeader={true} type={'과거의 내가'}>
       <Container>
-        {isTodayLetterNoticeView ? (
-          <TodayNewLetterNotice />
-        ) : hasLetter ? (
-          <PastLetters letters={letters} />
+        {isLoading ? (
+          <div>
+            <img src="../../assets/loading.gif" style={{ height: '100%' }} />
+          </div>
         ) : (
-          <BirdMessenger isPast={true} />
+          <>
+            {isTodayLetterNoticeView ? (
+              <TodayNewLetterNotice />
+            ) : hasLetter ? (
+              <PastLetters letters={letters} />
+            ) : (
+              <BirdMessenger isPast={true} />
+            )}
+          </>
         )}
       </Container>
     </Layout>

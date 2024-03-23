@@ -24,9 +24,7 @@ const WorryWriter = () => {
       .then((res) => {
         console.log(res);
 
-        if (res.data.code === 200) {
-          setIsSend(true);
-        } else setIsSend(false);
+        if (res.data.code === 200) setIsSend(true);
       })
       .catch((err) => {
         console.log(err);

@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+
 import { userSelectedDateState } from '@/recoil/states';
 import LetterDateSetter from '@/components/LetterDateSetter';
 import Layout from '@/layout';
-import RightBtnSVG from '../../../public/assets/icons/rightBtn.svg';
 
 const Contatiner = styled.div`
   width: 100%;
@@ -45,7 +44,7 @@ const DateSetUp = () => {
         Number(userSelectedDate[0]),
         Number(userSelectedDate[1]),
         Number(userSelectedDate[2]),
-      ) < new Date(todayYear, todayMonth, todayDay)
+      ) <= new Date(todayYear, todayMonth, todayDay)
     ) {
       return setMessage('미래의 날짜로 입력해줘');
     }
@@ -54,11 +53,11 @@ const DateSetUp = () => {
   };
 
   return (
-    <Layout isHeader={true}>
+    <Layout isHeader={true} type="미래의 나에게">
       <Contatiner>
         <LetterDateSetter message={message} />
         <BtnWraaper onClick={goToWrite}>
-          <Image src={RightBtnSVG} alt="rightBtn" />
+          <img src="/assets/icons/rightBtn.svg" />
         </BtnWraaper>
       </Contatiner>
     </Layout>

@@ -7,11 +7,13 @@ const Paper = ({
   setInput,
   message,
   isHidden,
+  isBlur,
 }: {
   input?: string;
   setInput?: React.Dispatch<React.SetStateAction<string>>;
   message?: string;
   isHidden?: boolean;
+  isBlur?: boolean;
 }) => {
   return (
     <S.Container isHidden={isHidden}>
@@ -20,6 +22,7 @@ const Paper = ({
         value={input ? input : message}
         maxLength={80}
         disabled={!!message}
+        isBlur={isBlur}
         onChange={(e) => {
           setInput && setInput(e.target.value);
         }}

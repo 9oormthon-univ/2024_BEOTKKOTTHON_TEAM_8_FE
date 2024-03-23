@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as S from './styles';
 import LetterDateRangeText from '../common/LetterDateRangeText';
+
 import { motion } from 'framer-motion';
 
 const pageVariants = {
@@ -53,15 +54,12 @@ const LetterPreview = ({
       transition={pageTransition}>
       {sendDate && (
         <S.Containter>
-          {!isSent && (
-            <LetterDateRangeText
-              sendDate={sendDate}
-              arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
-            />
-          )}
-
+          <LetterDateRangeText
+            sendDate={sendDate}
+            arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
+          />
           <div>
-            <LetterSVG />
+            <img src="/assets/icons/envelope.svg" />
           </div>
           <S.Button onClick={handleAction}>{btnText}</S.Button>
         </S.Containter>

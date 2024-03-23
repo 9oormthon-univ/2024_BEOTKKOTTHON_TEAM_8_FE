@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import Image from 'next/image';
 import {
   currentWorryTimeState,
   passwordState,
@@ -9,9 +8,6 @@ import {
 } from '@/recoil/states';
 import { api } from '@/apis/api';
 import * as S from './styles';
-
-import LeftBtnSVG from '../../public/assets/icons/leftBtn.svg';
-import RightBtnSVG from '../../public/assets/icons/RightBtn.svg';
 import TimePicker from '../TimePicker';
 
 interface Props {
@@ -81,10 +77,10 @@ const WorryTimeSetter = (props: Props) => {
 
       <S.BtnContainer>
         <div onClick={onPrev} style={{ cursor: 'pointer' }}>
-          <Image src={LeftBtnSVG} alt="leftBtn" />
+          <img src="/assets/icons/leftBtn.svg" />
         </div>
         <div onClick={onNext} style={{ cursor: 'pointer' }}>
-          <Image src={RightBtnSVG} alt="rightBtn" />
+          <img src="/assets/icons/rightBtn.svg" />
         </div>
       </S.BtnContainer>
     </S.Container>
