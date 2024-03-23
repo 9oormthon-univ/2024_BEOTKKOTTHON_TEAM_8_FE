@@ -62,11 +62,9 @@ export const FullWidth = styled.div`
 `;
 export const BirdContainer = styled.div`
   display: flex;
-  margin-left: 7.9rem;
 `;
 export const BirdImg = styled.img`
-  margin-top: 3.3rem;
-  justify-content: flex-start;
+  margin-left: 7.9rem;
   @media (max-height: 715px) {
     margin-top: 0.3rem;
   }
@@ -175,6 +173,7 @@ const Home = () => {
         if (res.data.code == 200) {
           let WorryData = res.data.result;
           setWorryData(WorryData);
+          console.log(res.data.result);
           console.log(res.data.result);
         } else if (!res.data.isSuccess) setIsNull(true);
       } catch (error) {
