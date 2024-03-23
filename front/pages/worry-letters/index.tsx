@@ -1,4 +1,4 @@
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useEffect, useState } from 'react';
 import * as W from './styles';
 import { api } from '@/apis/api';
 import { userIdState } from '@/recoil/states';
@@ -175,7 +175,7 @@ const Home = () => {
     currentPageData && (
       <Layout isHeader={true} type="보관함으로">
         <W.Total>
-          <div>
+          <>
             {isPopup && (
               <Popup
                 text={message}
@@ -243,7 +243,7 @@ const Home = () => {
                 )}
               </>
             )}
-          </div>
+          </>
         </W.Total>
         <W.BirdContainer>
           {!isBlur && (
