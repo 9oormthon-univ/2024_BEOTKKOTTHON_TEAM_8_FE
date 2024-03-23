@@ -7,6 +7,7 @@ import { userIdState } from '@/recoil/states';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router';
 import ReportBubble from '@/components/ReportBubble';
+import BirdMessenger from '@/components/common/BirdMessenger';
 
 import styled from 'styled-components';
 
@@ -165,6 +166,7 @@ const Report = () => {
   const [maxValue, setMaxValue] = useState(0);
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isNull, setIsNull] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -187,6 +189,8 @@ const Report = () => {
           setAiAdvice(res.data.result.answer);
 
           setIsLoading(false);
+        } else {
+          setIsNull(true);
         }
       })
       .catch((error) => {
@@ -215,7 +219,18 @@ const Report = () => {
 
   return (
     <Layout isHeader={true}>
-      {isLoading ? (
+      {isNull ? (
+        <div
+          style={{
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <BirdMessenger message="지금은 걱정이 없어" />
+        </div>
+      ) : isLoading ? (
         <LodingContainer>
           <img src="/assets/loading.gif" alt="Loading" />;
         </LodingContainer>
