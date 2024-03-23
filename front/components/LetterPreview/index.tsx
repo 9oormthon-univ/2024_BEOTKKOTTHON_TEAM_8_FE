@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as S from './styles';
 import LetterDateRangeText from '../common/LetterDateRangeText';
-import LetterSVG from '../../public/assets/icons/envelope.svg';
 
 const LetterPreview = ({
   isSent,
@@ -36,15 +35,12 @@ const LetterPreview = ({
     <>
       {sendDate && (
         <S.Containter>
-          {!isSent && (
-            <LetterDateRangeText
-              sendDate={sendDate}
-              arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
-            />
-          )}
-
+          <LetterDateRangeText
+            sendDate={sendDate}
+            arrivalDate={`${todayYear}-${todayMonth}-${todayDay}`}
+          />
           <div>
-            <LetterSVG />
+            <img src="/assets/icons/envelope.svg" />
           </div>
           <S.Button onClick={handleAction}>{btnText}</S.Button>
         </S.Containter>

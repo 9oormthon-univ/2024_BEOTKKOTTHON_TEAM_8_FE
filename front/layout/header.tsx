@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { TotalHeader, Menu, Line, HeaderName, Circle } from './headerStyle';
 
-const Header = ({ type }: { type: string }) => {
+const Header = ({ type }: { type?: string }) => {
   const headerNames = ['보관함으로', '과거의 내가', '미래의 나에게'];
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
   const [isHome, setIsHome] = useState(false);
@@ -13,7 +13,7 @@ const Header = ({ type }: { type: string }) => {
   const router = useRouter();
 
   useEffect(() => {
-    setSelectIcon(type);
+    if (type) setSelectIcon(type);
     console.log(type);
   }, [type]);
 
@@ -48,7 +48,7 @@ const Header = ({ type }: { type: string }) => {
         <Menu key={index} onClick={() => handleMenuClick(index, name)}>
           <Line />
           <HeaderName>{name}</HeaderName>
-          {selectIcon == name && <Circle src="./pointCircle.svg" />}
+          {selectIcon == name && <Circle src="/pointCircle.svg" />}
         </Menu>
       ))}
     </TotalHeader>

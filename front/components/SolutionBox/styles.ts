@@ -1,30 +1,28 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ isHidden?: boolean }>`
+export const Container = styled.div`
   position: relative;
-  height: 197px;
+  height: calc(82px + 1.5rem);
   background-size: cover;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
-  visibility: ${({ isHidden }) => (isHidden ? 'hidden' : 'visible')};
-  transition:
-    opacity 3s ease-out,
-    visibility 3s ease-out;
+  margin-bottom: 2rem;
 `;
 
-export const Input = styled.textarea<{ isBlur?: Boolean }>`
+export const SolutionAreaImg = styled.img`
+  margin-top: 1.5rem;
+`;
+
+export const Input = styled.textarea`
   font-family: 'NanumPen';
   font-size: 2.4rem;
   color: rgba(0, 0, 0, 0.5);
   background: transparent;
   text-overflow: ellipsis;
   line-height: 1.4;
-  filter: ${(props) => props.isBlur && 'blur(5px)'};
 
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 0;
   right: 0;
 
@@ -33,8 +31,11 @@ export const Input = styled.textarea<{ isBlur?: Boolean }>`
 
   border: none;
   outline: none;
-  padding: 0.6rem 1.6rem;
+  padding: 0.6rem 1.2rem;
   box-sizing: border-box;
   resize: none;
   overflow: hidden;
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.25);
+  }
 `;

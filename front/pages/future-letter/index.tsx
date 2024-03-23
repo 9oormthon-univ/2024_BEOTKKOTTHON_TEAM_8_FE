@@ -1,9 +1,11 @@
 import Layout from '@/layout';
 import BirdMessenger from '@/components/common/BirdMessenger';
 
-import RightBtnSVG from '../../public/assets/icons/rightBtn.svg';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '@/recoil/states';
+import { useEffect, useState } from 'react';
 
 const Contatiner = styled.div`
   width: 391px;
@@ -28,14 +30,27 @@ const BtnWraaper = styled.div`
 
 const FutureLetter = () => {
   const router = useRouter();
+  const userId = useRecoilValue(userIdState);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (userId) setIsLoading(false);
+    else setIsLoading(true);
+  }, []);
 
   return (
     <Layout isHeader={true} type="미래의 나에게">
       <Contatiner>
-        <BirdMessenger isPast={false} />
-        <BtnWraaper onClick={() => router.push('/future-letter/dateSetup')}>
-          <RightBtnSVG />
-        </BtnWraaper>
+        {isLoading ? (
+          <img src="/assets/loading.gif" />
+        ) : (
+          <>
+            <BirdMessenger isPast={false} />
+            <BtnWraaper onClick={() => router.push('/future-letter/dateSetup')}>
+              <img src="/assets/icons/rightBtn.svg" />
+            </BtnWraaper>
+          </>
+        )}
       </Contatiner>
     </Layout>
   );
