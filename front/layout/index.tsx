@@ -9,7 +9,7 @@ const Layout = ({
 }: {
   isHeader: boolean;
   children: React.ReactNode;
-  type: string;
+  type?: string;
 }) => {
   return (
     <Totalframe>
