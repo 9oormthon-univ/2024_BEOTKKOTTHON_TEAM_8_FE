@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import {
   registerServiceWorker,
   requestNotificationPermission,
-  sendPushNotification,
 } from './serviceWorker';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 import { initializeApp } from 'firebase/app';
@@ -69,8 +68,6 @@ const Test = () => {
   useEffect(() => {
     registerServiceWorker();
     requestNotificationPermission();
-
-    sendPushNotification('테스트 알림', '테스트 알림입니다.');
   }, []);
 
   return <></>;
