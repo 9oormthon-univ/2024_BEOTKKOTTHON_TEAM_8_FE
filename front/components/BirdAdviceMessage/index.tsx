@@ -10,12 +10,14 @@ const BirdAdviceMessage = ({
 }) => {
   const [open, setOpen] = useState(true);
   return (
-    open && (
-      <S.BubbleTotal leftSize={leftSize}>
-        <S.Bubble>{text}</S.Bubble>
-        <S.CloseBtn src={'./xBtn.svg'} onClick={() => setOpen(false)} />
-      </S.BubbleTotal>
-    )
+    <>
+      {open && (
+        <S.BubbleTotal leftSize={leftSize}>
+          <S.Bubble>{text}</S.Bubble>
+          <S.CloseBtn src={'./xBtn.svg'} onClick={() => setOpen(false)} />
+        </S.BubbleTotal>
+      )}
+    </>
   );
 };
 
