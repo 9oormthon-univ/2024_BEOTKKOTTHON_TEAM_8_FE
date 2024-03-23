@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  gap: 3.6rem;
+  gap: 2.8rem;
 `;
 
 export const Title = styled.div`
@@ -40,6 +40,8 @@ export const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  gap: 1.6rem;
 `;
 
 export const ReportTxtBox = styled.div`
@@ -51,6 +53,8 @@ export const ReportTxtBox = styled.div`
     height: 100%;
     display: block;
   }
+
+  padding: 0 4rem;
 `;
 
 export const ResultBox = styled.div`
@@ -88,7 +92,7 @@ export const BottomContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 1rem;
+  margin-top: 1.2rem;
 `;
 
 export const Goback = styled.div`
