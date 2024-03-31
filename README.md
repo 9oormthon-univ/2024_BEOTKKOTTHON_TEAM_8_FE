@@ -1,6 +1,6 @@
 # 2024_BEOTKKOTTHON_TEAM_8_FE
 ## 📨 불쑥 찾아오는 걱정이 당신을 방해하지 못하도록, 걱정보관함 
-![image](https://github.com/gkfla668/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/c5acf9de-fb8e-40f6-8c78-60143de29bc3)
+![worry-box 691e3f5e](https://github.com/goormthon-Univ/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/65c4ab6d-91aa-4bcc-835d-56db367bbf8e)
 
 ## 프로젝트 기간
 📅 2024.03.13 ~ 2024.03.24
@@ -38,15 +38,15 @@
 
 ## 기술 스택
 ### Front-end
-![image](https://github.com/gkfla668/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/e4aad0f7-5c6c-4b41-9f05-746aab42a56f)
-![image](https://github.com/gkfla668/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/c16ae9cf-4261-47a4-9c48-9799ce64c086)
-<img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=Recoil&logoColor=white"> ![image](https://github.com/gkfla668/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/7a73995c-064d-445b-b89b-4782162afaae)
- ![image](https://github.com/gkfla668/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/9f08531e-f6e1-478a-a7d0-b8477d710a90) ![image](https://github.com/gkfla668/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/da224025-7670-4e40-abf8-6be1334fc48e)
-
+![image](https://github.com/goormthon-Univ/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/2261eaa7-8a36-4545-a896-178791a721a8)
+<img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white"/>
+<img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=Recoil&logoColor=white"> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
+<img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Vercel&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black"/>
 
 ### [Back-end](https://github.com/goormthon-Univ/2024_BEOTKKOTTHON_TEAM_8_BE)
 
-<img src="https://img.shields.io/badge/GoogleCloud-4285F4?style=flat-square&logo=GoogleCloud&logoColor=white"> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"> ![image](https://github.com/gkfla668/2024_BEOTKKOTTHON_TEAM_8_FE/assets/81246338/8d478758-22f6-4a22-9499-199602a8bc47)
+<img src="https://img.shields.io/badge/GoogleCloud-4285F4?style=flat-square&logo=GoogleCloud&logoColor=white"> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black"/>
+- Flask
 
 
 ## 배포 주소
