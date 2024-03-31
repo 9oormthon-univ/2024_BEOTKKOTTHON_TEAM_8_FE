@@ -50,7 +50,7 @@
 
 
 ## 배포 주소
-현재 닫아놓은 상태입니다.
+(현재 서버 닫아놓은 상태입니다..☁️)
 #### Front-end : https://worry-box.vercel.app
-#### Back-end : https://worrybox.shop
+#### Back-end : https://worrybox.shop 
 
